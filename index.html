@@ -23,6 +23,8 @@
   --claret-dim:#3a201d;
   --slate:#5b7a99;
   --slate-dim:#22303d;
+  --amethyst:#8b6fb3;
+  --amethyst-dim:#2c2438;
   --radius: 3px;
 }
 *{box-sizing:border-box;}
@@ -180,6 +182,13 @@ tr.entrant-row.scratched:hover{ background:none; }
 .odds-chip.lay .v{ color:#bcd3e5; }
 .odds-chip.none{ opacity:.4; }
 
+.class-up-badge{
+  margin-top:4px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.2px;
+  color:#d3c2ec; background:var(--amethyst-dim); border:1px solid var(--amethyst);
+  border-radius:100px; padding:2px 7px; display:inline-block; white-space:nowrap;
+}
+.class-up-badge b{ color:#e9def9; font-weight:700; }
+
 table.odds{ width:100%; border-collapse:collapse; margin-bottom:6px; }
 table.odds th{ text-align:right; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line); }
 table.odds th:first-child{ text-align:left; }
@@ -336,6 +345,35 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   // 6 finish, 7 fieldsize, 8 margin, 9 sp, 10 trackcondition
   var R_RID=0,R_DATE=1,R_TRACK=2,R_DIST=3,R_CLASS=4,R_TRIAL=5,R_FIN=6,R_FS=7,R_MGN=8,R_SP=9,R_COND=10;
 
+  // Race class hierarchy — lower rank number = higher grade.
+  var CLASS_RANK = {
+    'Group 1':1, 'Group 2':2, 'Group 3':3, 'Listed':4, 'Open':5, 'Quality':6,
+    'BM 90':7, 'BM 84':8, 'BM 78':9, 'BM 78 (CHUTE)':10, 'BM 70':11, 'BM 70 (CHUTE)':12,
+    'BM 64':13, 'BM 64 (CHUTE)':14, 'BM 58':15, 'BM 58 (CHUTE)':16, 'BM 0-57':17,
+    'BM 0-57 (CHUTE)':18, 'Maiden':19, 'Maiden (CHUTE)':20, 'Hurdle':21, 'Steeple':22,
+    'Picnic':23, 'Trial':24
+  };
+  function classRank(name){ return CLASS_RANK.hasOwnProperty(name) ? CLASS_RANK[name] : null; }
+
+  // Best (highest-grade) class the horse has WON at, restricted to classes
+  // ranked higher (numerically lower rank) than referenceRank. Independent
+  // of the sample-window control — this is a lifetime achievement, not a
+  // recent-form figure.
+  function bestHigherClassWin(hid, referenceRank){
+    if(referenceRank==null) return null;
+    var best = null, count = 0;
+    competitiveRuns(hid).forEach(function(r){
+      if(!isWin(r)) return;
+      var cname = className(r[R_CLASS]);
+      var rank = classRank(cname);
+      if(rank==null || rank >= referenceRank) return;
+      count++;
+      if(best==null || rank < best.rank) best = {rank:rank, name:cname};
+    });
+    if(!best) return null;
+    return {name:best.name, rank:best.rank, count:count};
+  }
+
   var todayDays = Math.floor(Date.now()/86400000) - Math.floor(new Date(2020,0,1).getTime()/86400000);
 
   var state = {
@@ -468,6 +506,11 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     return '<div class="'+cls+'" title="'+label+'"><div class="k">'+label+'</div><div class="v">'+val+'</div><div class="k">'+sub+'</div></div>';
   }
 
+  function classUpBadge(higherWin){
+    var label = higherWin.count>1 ? higherWin.count+'x wins ↑' : 'Won ↑';
+    return '<div class="class-up-badge" title="Has won at a higher grade than this race">'+label+' <b>'+escapeHtml(higherWin.name)+'</b></div>';
+  }
+
   function money(v){
     if(v==null) return '—';
     var sign = v<0? '-' : '';
@@ -508,7 +551,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += '</div></div>';
 
     html += '<table class="entrants"><thead><tr>'+
-            '<th>№</th><th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>Trials here</th>'+
+            '<th>№</th><th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>This class</th><th>Trials here</th>'+
             '</tr></thead><tbody>';
 
     entrants.forEach(function(ent){
@@ -517,7 +560,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       if(ent.scratched){
         html += '<tr class="'+rowCls+'"><td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span></td>'+
                 '<td><div class="horse-name">'+escapeHtml(ent.name)+'</div><div class="horse-meta">SCRATCHED'+(ent.barrier!=null?' · Barrier '+ent.barrier:'')+'</div></td>'+
-                '<td colspan="5" class="no-data">—</td></tr>';
+                '<td colspan="6" class="no-data">—</td></tr>';
         return;
       }
       var compRuns = applyStatWindow(competitiveRuns(hid));
@@ -532,6 +575,11 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       }));
       var distSummary = computeSummary(distRuns);
 
+      var classRuns = applyStatWindow(competitiveRuns(hid).filter(function(r){ return className(r[R_CLASS])===race.raceclass; }));
+      var classSummary = computeSummary(classRuns);
+      var curRank = classRank(race.raceclass);
+      var higherWin = bestHigherClassWin(hid, curRank);
+
       var trialAtTrack = trialRuns(hid).filter(function(r){ return trackName(r[R_TRACK])===race.track; });
       var trialSummary = computeSummary(trialAtTrack.slice(0,10));
 
@@ -543,9 +591,10 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
               '<td>'+chip('W-P-S', overall)+'</td>'+
               '<td>'+chip('W-P-S', trackSummary)+'</td>'+
               '<td>'+chip('W-P-S', distSummary)+'</td>'+
+              '<td>'+chip('W-P-S', classSummary)+(higherWin? classUpBadge(higherWin):'')+'</td>'+
               '<td>'+ (trialAtTrack.length? chip('T.starts', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>') +'</td>'+
               '</tr>';
-      html += '<tr class="detail-row"><td colspan="7"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
+      html += '<tr class="detail-row"><td colspan="8"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
     });
 
     html += '</tbody></table>';
@@ -603,14 +652,25 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     var trialSummary = computeSummary(trialsAtTrack);
     var allTrials = trialRuns(hid);
     var allTrialsSummary = computeSummary(allTrials);
+    var classW = computeSummary(applyStatWindow(allComp.filter(function(r){ return className(r[R_CLASS])===race.raceclass; })));
+    var curRank = classRank(race.raceclass);
+    var higherWin = bestHigherClassWin(hid, curRank);
 
     var html = '<div class="detail-grid">';
     html += statCard('Overall record ('+sampleLabel()+')', overallW);
     html += statCard('At '+race.track, trackW);
     html += statCard('At this trip ('+(state.distTol===0?'exact':'±'+state.distTol+'m')+')', distW);
+    html += statCard('In '+(race.raceclass||'this class'), classW);
     html += statCard('Trials/jumpouts at '+race.track, trialSummary, 'trial');
     html += statCard('All trials/jumpouts', allTrialsSummary, 'trial');
     html += '</div>';
+
+    if(higherWin){
+      html += '<div class="no-data" style="margin:-6px 0 12px;">'+
+              '<span class="class-up-badge">Won at higher grade <b>'+escapeHtml(higherWin.name)+'</b>'+
+              (higherWin.count>1? ' ('+higherWin.count+' wins above this class)':'')+'</span>'+
+              ' — racing down in class today.</div>';
+    }
 
     // Odds & promo comparison across bookmakers
     var entOdds = null;
