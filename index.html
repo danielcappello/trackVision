@@ -85,36 +85,39 @@ header.top{
 }
 .checkbox-label input[type="checkbox"]:focus{ outline:2px solid var(--brass); outline-offset:2px; }
 
-/* ---------- Layout ---------- */
-.layout{ display:grid; grid-template-columns: 300px 1fr; min-height:calc(100vh - 92px); }
-aside.races{
-  border-right:1px solid var(--line);
-  overflow-y:auto; max-height:calc(100vh - 92px);
-  padding:10px 0;
+/* ---------- Meeting bar (track + race selector, Sportsbet-style) ---------- */
+.meeting-bar{
+  border-bottom:1px solid var(--line);
+  padding:14px 28px; display:flex; flex-direction:column; gap:10px;
+  background:var(--ledger);
 }
-.day-group{ margin-bottom:6px; }
-.day-head{
-  font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase;
-  letter-spacing:1.4px; color:var(--brass); padding:12px 16px 6px;
+.meeting-bar-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.meeting-select-wrap{ display:flex; flex-direction:column; gap:4px; }
+.meeting-select-wrap label{
+  font-size:10px; text-transform:uppercase; letter-spacing:1.1px; color:var(--paper-dim);
+  font-family:'IBM Plex Mono',monospace;
 }
-.track-head{
-  font-family:'Fraunces', serif; font-weight:600; font-size:14.5px; color:var(--paper);
-  padding:6px 16px 2px; opacity:.92;
+#meetingSelect{
+  background:var(--ledger-2); color:var(--paper); border:1px solid var(--line);
+  padding:8px 12px; border-radius:var(--radius); font-family:'Fraunces',serif; font-weight:600;
+  font-size:15px; min-width:220px;
 }
-.race-item{
-  display:flex; align-items:center; gap:10px; padding:7px 16px 7px 22px; cursor:pointer;
-  border-left:2px solid transparent; font-size:12.5px;
+#meetingSelect:focus{ outline:2px solid var(--brass); outline-offset:1px; }
+.race-tabs{ display:flex; gap:7px; flex-wrap:wrap; }
+.race-tab{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; color:var(--paper-dim);
+  background:var(--ledger-2); border:1px solid var(--line); border-radius:6px;
+  padding:7px 13px; cursor:pointer; white-space:nowrap; line-height:1;
 }
-.race-item:hover{ background:var(--ledger); }
-.race-item.active{ background:var(--ledger-2); border-left-color:var(--brass); }
-.race-item .rno{
-  font-family:'IBM Plex Mono',monospace; color:var(--brass); font-weight:600; width:20px; flex:none;
+.race-tab:hover{ border-color:var(--brass-dim); color:var(--paper); }
+.race-tab.active{ background:var(--brass); border-color:var(--brass); color:#1a1d16; }
+.race-tab.trial{ color:var(--slate); border-style:dashed; }
+.race-tab.trial.active{ background:var(--slate); border-color:var(--slate); color:#0e1620; }
+.meeting-empty{
+  font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--paper-dim); padding:6px 0;
 }
-.race-item .rmeta{ color:var(--paper-dim); font-size:11px; }
-.race-item .rcls{ color:var(--paper-dim); flex:1; text-align:right; font-size:10.5px; font-family:'IBM Plex Mono',monospace;}
-.race-item.trial .rno{ color:var(--slate); }
 
-main.board{ padding:22px 30px 60px; overflow-y:auto; max-height:calc(100vh - 92px); }
+main.board{ padding:22px 30px 60px; }
 
 .empty-state{ color:var(--paper-dim); padding:60px 10px; text-align:center; font-family:'Fraunces',serif; font-size:18px;}
 
@@ -137,8 +140,7 @@ main.board{ padding:22px 30px 60px; overflow-y:auto; max-height:calc(100vh - 92p
 }
 
 /* ---------- Entrant table ---------- */
-.table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-table.entrants{ width:100%; border-collapse:collapse; min-width:720px; }
+table.entrants{ width:100%; border-collapse:collapse; }
 table.entrants thead th{
   text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase;
   letter-spacing:1px; color:var(--paper-dim); padding:6px 10px; border-bottom:1px solid var(--line);
@@ -152,10 +154,12 @@ tr.entrant-row.scratched:hover{ background:none; }
 .barrier-chip{
   display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px;
   border-radius:50%; border:1px solid var(--brass-dim); color:var(--brass); font-family:'IBM Plex Mono',monospace;
-  font-size:11.5px; font-weight:600;
+  font-size:11.5px; font-weight:600; vertical-align:middle;
 }
+table.entrants td:first-child{ white-space:normal; }
+table.entrants td:first-child .horse-name{ display:inline-block; vertical-align:middle; margin-left:8px; }
 .horse-name{ font-weight:600; font-size:14px; color:var(--paper); font-family:'Fraunces',serif; }
-.horse-meta{ font-size:11px; color:var(--paper-dim); margin-top:2px; }
+.horse-meta{ display:block; font-size:11px; color:var(--paper-dim); margin-top:2px; }
 .stat-chip{
   display:inline-flex; flex-direction:column; align-items:center; gap:1px; min-width:56px;
   padding:5px 8px; border-radius:var(--radius); border:1px solid var(--line); background:var(--ledger);
@@ -194,7 +198,7 @@ tr.entrant-row.scratched:hover{ background:none; }
 .class-up-badge.place{ color:#ecdcb8; background:#332a17; border-color:var(--brass); margin-left:4px; }
 .class-up-badge.place b{ color:#f6e6bf; }
 
-table.odds{ width:100%; border-collapse:collapse; margin-bottom:6px; min-width:620px; }
+table.odds{ width:100%; border-collapse:collapse; margin-bottom:6px; }
 table.odds th{ text-align:right; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line); }
 table.odds th:first-child{ text-align:left; }
 table.odds td{ padding:6px 8px; font-size:12px; font-family:'IBM Plex Mono',monospace; border-bottom:1px solid rgba(255,255,255,0.03); text-align:right; }
@@ -226,7 +230,7 @@ tr.detail-row td{ padding:0; border-bottom:1px solid var(--line);}
 
 .section-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--brass); margin:16px 0 8px;}
 
-table.h2h{ width:100%; border-collapse:collapse; margin-bottom:6px; min-width:380px; }
+table.h2h{ width:100%; border-collapse:collapse; margin-bottom:6px; }
 table.h2h th{ text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line);}
 table.h2h td{ padding:6px 8px; font-size:12.5px; border-bottom:1px solid rgba(255,255,255,0.03); }
 .h2h-record{ font-family:'IBM Plex Mono',monospace; font-weight:700; }
@@ -234,7 +238,7 @@ table.h2h td{ padding:6px 8px; font-size:12.5px; border-bottom:1px solid rgba(25
 .h2h-record.poor{ color:#e79088; }
 .h2h-record.even{ color:var(--paper-dim); }
 
-table.form{ width:100%; border-collapse:collapse; min-width:520px; }
+table.form{ width:100%; border-collapse:collapse; }
 table.form th{ text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line);}
 table.form td{ padding:6px 8px; font-size:12px; font-family:'IBM Plex Mono',monospace; border-bottom:1px solid rgba(255,255,255,0.03); }
 tr.form-row.trial td{ color:var(--slate); font-style:italic; }
@@ -261,13 +265,42 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   .ctrl input[type="text"]{ min-width:0; }
   .ctrl-check{ flex:1 1 100%; }
 
-  .layout{ grid-template-columns: 1fr; }
-  aside.races{ max-height:240px; border-right:none; border-bottom:1px solid var(--line); }
-  main.board{ max-height:none; padding:16px 16px 48px; }
+  .meeting-bar{ padding:12px 16px; }
+  #meetingSelect{ width:100%; min-width:0; }
+  .meeting-select-wrap{ width:100%; }
+
+  main.board{ padding:16px 16px 48px; }
 
   .race-header h2{ font-size:20px; }
   .detail-panel{ padding:14px 14px 18px 14px; }
   .detail-grid{ grid-template-columns: repeat(auto-fit,minmax(135px,1fr)); }
+
+  /* ---- Turn wide data tables into stacked, labeled cards so nothing needs
+     left-right scrolling on a phone or narrow tablet screen. ---- */
+  table.entrants, table.odds, table.h2h, table.form{ display:block; width:100%; }
+  table.entrants thead, table.odds thead, table.h2h thead, table.form thead{ display:none; }
+  table.entrants tbody, table.odds tbody, table.h2h tbody, table.form tbody{ display:block; width:100%; }
+
+  table.entrants tr.entrant-row, table.odds tr, table.h2h tr, table.form tr{
+    display:flex; flex-wrap:wrap; width:100%; gap:8px 14px;
+    border:1px solid var(--line); border-radius:8px;
+    margin-bottom:10px; padding:12px; background:var(--ledger-2);
+  }
+  table.entrants tr.entrant-row.scratched{ opacity:.55; }
+  table.entrants tr.detail-row{ display:block; border:none; margin:0; padding:0; background:none; }
+  table.entrants tr.detail-row td{ display:block; padding:0; border:none; }
+
+  table.entrants td, table.odds td, table.h2h td, table.form td{
+    display:block; flex:1 1 100%; padding:0; border:none; text-align:left; min-width:0;
+  }
+  table.entrants td[data-label]::before,
+  table.odds td[data-label]::before,
+  table.h2h td[data-label]::before,
+  table.form td[data-label]::before{
+    content: attr(data-label); display:block; font-size:9px; text-transform:uppercase;
+    letter-spacing:.6px; color:var(--paper-dim); font-family:'IBM Plex Mono',monospace; margin-bottom:3px;
+  }
+  table.entrants td .chip-row, table.odds td{ text-align:left; }
 }
 
 @media (max-width:480px){
@@ -279,8 +312,9 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   .checkbox-label{ font-size:12.5px; }
   .checkbox-label input[type="checkbox"]{ width:18px; height:18px; }
 
-  aside.races{ max-height:220px; }
-  .race-item{ padding:9px 12px 9px 16px; }
+  .meeting-bar{ padding:10px 12px; }
+  #meetingSelect{ font-size:14px; padding:9px 10px; }
+  .race-tab{ font-size:12px; padding:8px 12px; }
   main.board{ padding:12px 12px 40px; }
 
   .race-header{ gap:10px; }
@@ -322,10 +356,6 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       <input id="searchInput" type="text" placeholder="Search by name…" autocomplete="off">
     </div>
     <div class="ctrl">
-      <label for="trackFilter">Track</label>
-      <select id="trackFilter"><option value="">All tracks</option></select>
-    </div>
-    <div class="ctrl">
       <label for="statWindow">Sample</label>
       <select id="statWindow">
         <option value="all">All starts</option>
@@ -351,12 +381,19 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   </div>
 </header>
 
-<div class="layout">
-  <aside class="races" id="raceList"></aside>
-  <main class="board" id="board">
-    <div class="empty-state">Select a race on the left to view the field and form.</div>
-  </main>
+<div class="meeting-bar">
+  <div class="meeting-bar-row">
+    <div class="meeting-select-wrap">
+      <label for="meetingSelect">Meeting</label>
+      <select id="meetingSelect"></select>
+    </div>
+  </div>
+  <div class="race-tabs" id="raceTabs"></div>
 </div>
+
+<main class="board" id="board">
+  <div class="empty-state">Select a meeting and race above to view the field and form.</div>
+</main>
 
 <div id="loadingOverlay" class="loading-overlay">
   <div class="loading-box">
@@ -429,9 +466,9 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
 
   var state = {
     activeRaceId: null,
+    activeMeetingKey: null, // "date|track"
     statWindow: '5',
     distTol: 100,
-    trackFilterName: '',
     showTrials: false,
     expanded: {}   // horseid -> bool (per race context, reset when race changes)
   };
@@ -492,61 +529,109 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   function trackName(idx){ return TRACKS[idx]; }
   function className(idx){ return CLASSES[idx]; }
 
-  // ---------- build race list (sidebar) ----------
-  function buildRaceList(){
-    var el = document.getElementById('raceList');
-    el.innerHTML='';
-    var byDate = {};
-    RACES.forEach(function(race){
-      if(state.trackFilterName && race.track !== state.trackFilterName) return;
-      if(race.trialjumpout && !state.showTrials) return;
-      if(!byDate[race.date]) byDate[race.date]={};
-      if(!byDate[race.date][race.track]) byDate[race.date][race.track]=[];
-      byDate[race.date][race.track].push(race);
-    });
-    var dates = Object.keys(byDate).sort();
-    dates.forEach(function(date){
-      var dg = document.createElement('div'); dg.className='day-group';
-      var dh = document.createElement('div'); dh.className='day-head';
-      dh.textContent = fmtDateStr(date);
-      dg.appendChild(dh);
-      var tracks = Object.keys(byDate[date]).sort();
-      tracks.forEach(function(trk){
-        var th = document.createElement('div'); th.className='track-head'; th.textContent = trk;
-        dg.appendChild(th);
-        var races = byDate[date][trk].sort(function(a,b){return (a.race||0)-(b.race||0);});
-        races.forEach(function(race){
-          var item = document.createElement('div');
-          item.className = 'race-item' + (race.trialjumpout?' trial':'') + (race.raceid===state.activeRaceId?' active':'');
-          item.innerHTML = '<span class="rno">R'+(race.race!=null?race.race:'?')+'</span>'+
-                            '<span class="rmeta">'+(race.distance||'?')+'m'+(race.trialjumpout?' · Trial':'')+'</span>'+
-                            '<span class="rcls">'+(race.raceclass||'')+'</span>';
-          item.addEventListener('click', function(){
-            state.activeRaceId = race.raceid;
-            state.expanded = {};
-            buildRaceList();
-            renderRace(race);
-          });
-          dg.appendChild(item);
-        });
-      });
-      el.appendChild(dg);
-    });
-  }
-
   function fmtDateStr(dateStr){
     var parts = dateStr.split('-');
     var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
     return d.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
   }
 
-  // ---------- populate track filter dropdown ----------
-  function buildTrackFilter(){
-    var sel = document.getElementById('trackFilter');
-    var names = Array.from(new Set(RACES.map(function(r){return r.track;}))).sort();
-    names.forEach(function(n){
-      var o = document.createElement('option'); o.value=n; o.textContent=n; sel.appendChild(o);
+  function meetingKey(race){ return race.date+'|'+race.track; }
+
+  // Group races by meeting (date+track). A meeting "counts" for the dropdown
+  // if it has at least one race matching the current trials toggle, so a
+  // trial-only meeting doesn't leave the dropdown pointing at an empty list.
+  function meetingsMap(){
+    var map = {};
+    RACES.forEach(function(race){
+      var key = meetingKey(race);
+      if(!map[key]) map[key] = {date:race.date, track:race.track, races:[]};
+      map[key].races.push(race);
     });
+    return map;
+  }
+
+  // ---------- meeting dropdown (Track selector) ----------
+  function buildMeetingSelector(){
+    var sel = document.getElementById('meetingSelect');
+    var map = meetingsMap();
+    var keys = Object.keys(map).sort(function(a,b){
+      var ma=map[a], mb=map[b];
+      if(ma.date!==mb.date) return ma.date<mb.date?-1:1;
+      return ma.track<mb.track?-1:(ma.track>mb.track?1:0);
+    });
+
+    var dates = Array.from(new Set(keys.map(function(k){ return map[k].date; })));
+    sel.innerHTML = '';
+    dates.forEach(function(date){
+      var og = document.createElement('optgroup');
+      og.label = fmtDateStr(date);
+      keys.filter(function(k){ return map[k].date===date; }).forEach(function(k){
+        var m = map[k];
+        var allTrial = m.races.every(function(r){ return r.trialjumpout; });
+        var o = document.createElement('option');
+        o.value = k;
+        o.textContent = m.track + (allTrial? ' (Trials)':'');
+        og.appendChild(o);
+      });
+      sel.appendChild(og);
+    });
+
+    if(!state.activeMeetingKey || !map[state.activeMeetingKey]){
+      state.activeMeetingKey = keys.length? keys[0] : null;
+    }
+    if(state.activeMeetingKey) sel.value = state.activeMeetingKey;
+  }
+
+  // ---------- race number tabs (R1, R2, R3…) for the selected meeting ----------
+  function buildRaceTabs(){
+    var el = document.getElementById('raceTabs');
+    el.innerHTML = '';
+    var map = meetingsMap();
+    var meeting = state.activeMeetingKey ? map[state.activeMeetingKey] : null;
+    if(!meeting){
+      el.innerHTML = '<div class="meeting-empty">No meetings available.</div>';
+      return;
+    }
+    var races = meeting.races.slice().sort(function(a,b){ return (a.race||0)-(b.race||0); });
+    var visible = races.filter(function(r){ return state.showTrials || !r.trialjumpout; });
+
+    if(!visible.length){
+      el.innerHTML = '<div class="meeting-empty">Only trial/jumpout races at this meeting — tick "Show trials/jumpouts" above to view them.</div>';
+      return;
+    }
+
+    // keep the active race if it's still visible; otherwise default to the first
+    if(!visible.some(function(r){ return r.raceid===state.activeRaceId; })){
+      state.activeRaceId = visible[0].raceid;
+      state.expanded = {};
+    }
+
+    visible.forEach(function(race){
+      var btn = document.createElement('div');
+      btn.className = 'race-tab' + (race.trialjumpout?' trial':'') + (race.raceid===state.activeRaceId?' active':'');
+      btn.textContent = 'R'+(race.race!=null?race.race:'?');
+      btn.title = (race.distance||'?')+'m · '+(race.raceclass||'')+(race.trialjumpout?' · Trial/Jumpout':'');
+      btn.addEventListener('click', function(){
+        selectRace(race);
+      });
+      el.appendChild(btn);
+    });
+
+    var active = visible.find(function(r){ return r.raceid===state.activeRaceId; });
+    if(active) renderRace(active);
+  }
+
+  function selectRace(race){
+    state.activeRaceId = race.raceid;
+    state.expanded = {};
+    buildRaceTabs();
+  }
+
+  function selectMeeting(key){
+    state.activeMeetingKey = key;
+    state.activeRaceId = null;
+    state.expanded = {};
+    buildRaceTabs();
   }
 
   // ---------- stat chip builder ----------
@@ -605,16 +690,17 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += '<span class="pill">Distance range: '+ (state.distTol===0?'exact':'±'+state.distTol+'m') +'</span>';
     html += '</div></div>';
 
-    html += '<div class="table-scroll"><table class="entrants"><thead><tr>'+
-            '<th>№</th><th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>This class</th><th>Trials here</th>'+
+    html += '<table class="entrants"><thead><tr>'+
+            '<th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>This class</th><th>Trials here</th>'+
             '</tr></thead><tbody>';
 
     entrants.forEach(function(ent){
       var hid = ent.horseid;
       var rowCls = 'entrant-row' + (ent.scratched?' scratched':'');
       if(ent.scratched){
-        html += '<tr class="'+rowCls+'"><td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span></td>'+
-                '<td><div class="horse-name">'+escapeHtml(ent.name)+'</div><div class="horse-meta">SCRATCHED'+(ent.barrier!=null?' · Barrier '+ent.barrier:'')+'</div></td>'+
+        html += '<tr class="'+rowCls+'"><td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span>'+
+                '<div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
+                '<div class="horse-meta">SCRATCHED'+(ent.barrier!=null?' · Barrier '+ent.barrier:'')+'</div></td>'+
                 '<td colspan="6" class="no-data">—</td></tr>';
         return;
       }
@@ -640,20 +726,20 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       var trialSummary = computeSummary(trialAtTrack.slice(0,10));
 
       html += '<tr class="'+rowCls+'" data-hid="'+hid+'">'+
-              '<td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span></td>'+
-              '<td><div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
+              '<td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span>'+
+              '<div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
               '<div class="horse-meta">Barrier '+(ent.barrier!=null?ent.barrier:'—')+' · '+escapeHtml(ent.jockey||'')+' · '+escapeHtml(ent.trainer||'')+'</div></td>'+
-              '<td>'+oddsChips(ent)+'</td>'+
-              '<td>'+chip('W-P-S', overall)+'</td>'+
-              '<td>'+chip('W-P-S', trackSummary)+'</td>'+
-              '<td>'+chip('W-P-S', distSummary)+'</td>'+
-              '<td>'+chip('W-P-S', classSummary)+(higherWin? classAchievementBadge(higherWin,'win'):'')+(higherPlace? classAchievementBadge(higherPlace,'place'):'')+'</td>'+
-              '<td>'+ (trialAtTrack.length? chip('T.starts', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>') +'</td>'+
+              '<td data-label="Best odds">'+oddsChips(ent)+'</td>'+
+              '<td data-label="Overall">'+chip('W-P-S', overall)+'</td>'+
+              '<td data-label="This track">'+chip('W-P-S', trackSummary)+'</td>'+
+              '<td data-label="This trip">'+chip('W-P-S', distSummary)+'</td>'+
+              '<td data-label="This class">'+chip('W-P-S', classSummary)+(higherWin? classAchievementBadge(higherWin,'win'):'')+(higherPlace? classAchievementBadge(higherPlace,'place'):'')+'</td>'+
+              '<td data-label="Trials here">'+ (trialAtTrack.length? chip('T.starts', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>') +'</td>'+
               '</tr>';
-      html += '<tr class="detail-row"><td colspan="8"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
+      html += '<tr class="detail-row"><td colspan="7"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
     });
 
-    html += '</tbody></table></div>';
+    html += '</tbody></table>';
     board.innerHTML = html;
 
     // attach click handlers
@@ -738,22 +824,22 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       html += '<div class="section-label">Odds &amp; promo comparison</div>';
       var bestWinPrice = entOdds.bestWin? entOdds.bestWin.price : null;
       var bestPlacePrice = entOdds.bestPlace? entOdds.bestPlace.price : null;
-      html += '<div class="table-scroll"><table class="odds"><thead><tr><th>Bookmaker</th><th>Win</th><th>Place</th><th>Market</th>'+
+      html += '<table class="odds"><thead><tr><th>Bookmaker</th><th>Win</th><th>Place</th><th>Market</th>'+
               '<th>Lay (Betfair)</th><th>Qualifying P/L</th><th>Bonus turnover</th><th>Promo 3rd</th></tr></thead><tbody>';
       var sortedOdds = entOdds.odds.slice().sort(function(a,b){ return (b.win||0)-(a.win||0); });
       sortedOdds.forEach(function(o){
         html += '<tr>';
         html += '<td>'+escapeHtml(o.bk)+'</td>';
-        html += '<td class="'+(o.win===bestWinPrice?'best':'')+'">'+priceStr(o.win)+'</td>';
-        html += '<td class="'+(o.place===bestPlacePrice?'best':'')+'">'+priceStr(o.place)+'</td>';
-        html += '<td><span class="code-pill">'+escapeHtml(o.code||'—')+'</span></td>';
-        html += '<td>'+priceStr(o.lay)+'</td>';
-        html += '<td class="'+(o.qualifyingPl!=null&&o.qualifyingPl<0?'neg':(o.qualifyingPl!=null&&o.qualifyingPl>0?'pos':''))+'">'+money(o.qualifyingPl)+'</td>';
-        html += '<td>'+money(o.bonusTurnover)+'</td>';
-        html += '<td class="'+(o.promo3rd!=null&&o.promo3rd<0?'neg':(o.promo3rd!=null&&o.promo3rd>0?'pos':''))+'">'+money(o.promo3rd)+'</td>';
+        html += '<td data-label="Win" class="'+(o.win===bestWinPrice?'best':'')+'">'+priceStr(o.win)+'</td>';
+        html += '<td data-label="Place" class="'+(o.place===bestPlacePrice?'best':'')+'">'+priceStr(o.place)+'</td>';
+        html += '<td data-label="Market"><span class="code-pill">'+escapeHtml(o.code||'—')+'</span></td>';
+        html += '<td data-label="Lay (Betfair)">'+priceStr(o.lay)+'</td>';
+        html += '<td data-label="Qualifying P/L" class="'+(o.qualifyingPl!=null&&o.qualifyingPl<0?'neg':(o.qualifyingPl!=null&&o.qualifyingPl>0?'pos':''))+'">'+money(o.qualifyingPl)+'</td>';
+        html += '<td data-label="Bonus turnover">'+money(o.bonusTurnover)+'</td>';
+        html += '<td data-label="Promo 3rd" class="'+(o.promo3rd!=null&&o.promo3rd<0?'neg':(o.promo3rd!=null&&o.promo3rd>0?'pos':''))+'">'+money(o.promo3rd)+'</td>';
         html += '</tr>';
       });
-      html += '</tbody></table></div>';
+      html += '</tbody></table>';
       html += '<div class="no-data" style="margin-top:-4px;">Highest win &amp; place prices highlighted. Lay price is the Betfair exchange lay, shared across bookmakers. Qualifying P/L, bonus turnover and promo 3rd figures are bookmaker-specific promotional calculations.</div>';
     }
 
@@ -787,16 +873,16 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     if(h2hRows.length===0){
       html += '<div class="no-data">No prior meetings on record against runners in this race.</div>';
     } else {
-      html += '<div class="table-scroll"><table class="h2h"><thead><tr><th>Rival</th><th>Meetings</th><th>Record</th></tr></thead><tbody>';
+      html += '<table class="h2h"><thead><tr><th>Rival</th><th>Meetings</th><th>Record</th></tr></thead><tbody>';
       h2hRows.sort(function(a,b){ return b.meetings-a.meetings; });
       h2hRows.forEach(function(row){
         var cls = 'even';
         if(row.iWon>row.rivalWon) cls='good';
         else if(row.rivalWon>row.iWon) cls='poor';
-        html += '<tr><td>'+escapeHtml(row.name)+'</td><td>'+row.meetings+'</td>'+
-                '<td class="h2h-record '+cls+'">'+row.iWon+'-'+row.rivalWon+ (row.meetings-row.iWon-row.rivalWon>0? ' ('+(row.meetings-row.iWon-row.rivalWon)+' dead-heat/tie)':'') +'</td></tr>';
+        html += '<tr><td>'+escapeHtml(row.name)+'</td><td data-label="Meetings">'+row.meetings+'</td>'+
+                '<td data-label="Record" class="h2h-record '+cls+'">'+row.iWon+'-'+row.rivalWon+ (row.meetings-row.iWon-row.rivalWon>0? ' ('+(row.meetings-row.iWon-row.rivalWon)+' dead-heat/tie)':'') +'</td></tr>';
       });
-      html += '</tbody></table></div>';
+      html += '</tbody></table>';
     }
 
     // Recent form line (competitive + trials combined, distinctly styled)
@@ -805,7 +891,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     if(combined.length===0){
       html += '<div class="no-data">No recorded starts.</div>';
     } else {
-      html += '<div class="table-scroll"><table class="form"><thead><tr><th>Date</th><th>Track</th><th>Trip</th><th>Class</th><th>Type</th><th>Fin</th><th>Margin</th><th>SP</th></tr></thead><tbody>';
+      html += '<table class="form"><thead><tr><th>Date</th><th>Track</th><th>Trip</th><th>Class</th><th>Type</th><th>Fin</th><th>Margin</th><th>SP</th></tr></thead><tbody>';
       combined.forEach(function(r){
         var trial = r[R_TRIAL]===1;
         var finBadge;
@@ -815,16 +901,16 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         else { finBadge = '<span class="finpos other">'+r[R_FIN]+'</span>'; }
         html += '<tr class="form-row'+(trial?' trial':'')+'">'+
                 '<td>'+fmtDate(r[R_DATE])+'</td>'+
-                '<td>'+escapeHtml(trackName(r[R_TRACK]))+'</td>'+
-                '<td>'+(r[R_DIST]!=null?r[R_DIST]+'m':'—')+'</td>'+
-                '<td>'+escapeHtml(className(r[R_CLASS]))+'</td>'+
-                '<td>'+(trial?'Trial/JO':'Race')+'</td>'+
-                '<td>'+finBadge+ (r[R_FS]!=null? ' <span style="color:var(--paper-dim)">/'+r[R_FS]+'</span>':'') +'</td>'+
-                '<td>'+(r[R_MGN]!=null? r[R_MGN]+'L':'—')+'</td>'+
-                '<td>'+(r[R_SP]!=null? '$'+r[R_SP].toFixed(2):'—')+'</td>'+
+                '<td data-label="Track">'+escapeHtml(trackName(r[R_TRACK]))+'</td>'+
+                '<td data-label="Trip">'+(r[R_DIST]!=null?r[R_DIST]+'m':'—')+'</td>'+
+                '<td data-label="Class">'+escapeHtml(className(r[R_CLASS]))+'</td>'+
+                '<td data-label="Type">'+(trial?'Trial/JO':'Race')+'</td>'+
+                '<td data-label="Fin">'+finBadge+ (r[R_FS]!=null? ' <span style="color:var(--paper-dim)">/'+r[R_FS]+'</span>':'') +'</td>'+
+                '<td data-label="Margin">'+(r[R_MGN]!=null? r[R_MGN]+'L':'—')+'</td>'+
+                '<td data-label="SP">'+(r[R_SP]!=null? '$'+r[R_SP].toFixed(2):'—')+'</td>'+
                 '</tr>';
       });
-      html += '</tbody></table></div>';
+      html += '</tbody></table>';
     }
 
     panel.innerHTML = html;
@@ -877,10 +963,11 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         div.className='search-hit';
         div.innerHTML = '<b>'+escapeHtml(m.name)+'</b> — '+escapeHtml(m.race.track)+' R'+m.race.race;
         div.addEventListener('click', function(){
+          state.activeMeetingKey = meetingKey(m.race);
           state.activeRaceId = m.race.raceid;
           state.expanded = {}; state.expanded[m.horseid]=true;
-          buildRaceList();
-          renderRace(m.race);
+          document.getElementById('meetingSelect').value = state.activeMeetingKey;
+          buildRaceTabs();
           setTimeout(function(){
             var el = document.getElementById('detail-'+m.horseid);
             if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
@@ -899,12 +986,11 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   // ---------- wire up controls ----------
   function init(){
     horseIndex = buildHorseIndex();
-    buildTrackFilter();
-    buildRaceList();
+    buildMeetingSelector();
+    buildRaceTabs();
 
-    document.getElementById('trackFilter').addEventListener('change', function(e){
-      state.trackFilterName = e.target.value;
-      buildRaceList();
+    document.getElementById('meetingSelect').addEventListener('change', function(e){
+      selectMeeting(e.target.value);
     });
     document.getElementById('statWindow').addEventListener('change', function(e){
       state.statWindow = e.target.value;
@@ -916,7 +1002,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     });
     document.getElementById('showTrials').addEventListener('change', function(e){
       state.showTrials = e.target.checked;
-      buildRaceList();
+      buildRaceTabs();
     });
     document.getElementById('searchInput').addEventListener('input', function(e){
       handleSearch(e.target.value.trim());
