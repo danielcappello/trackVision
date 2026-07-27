@@ -291,7 +291,19 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   table.entrants tr.detail-row td{ display:block; padding:0; border:none; }
 
   table.entrants td, table.odds td, table.h2h td, table.form td{
-    display:block; flex:1 1 100%; padding:0; border:none; text-align:left; min-width:0;
+    display:block; padding:0; border:none; text-align:left; min-width:0;
+  }
+  /* the first cell in each row (horse identity / bookmaker / rival / date)
+     reads as the card's title line, so it always gets its own full row */
+  table.entrants td:first-child, table.odds td:first-child,
+  table.h2h td:first-child, table.form td:first-child{
+    flex:1 1 100%;
+  }
+  /* everything else flows left-to-right and wraps to a new row once it runs
+     out of room, rather than stacking one field per line */
+  table.entrants td:not(:first-child), table.odds td:not(:first-child),
+  table.h2h td:not(:first-child), table.form td:not(:first-child){
+    flex:1 1 112px; min-width:112px;
   }
   table.entrants td[data-label]::before,
   table.odds td[data-label]::before,
@@ -301,6 +313,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     letter-spacing:.6px; color:var(--paper-dim); font-family:'IBM Plex Mono',monospace; margin-bottom:3px;
   }
   table.entrants td .chip-row, table.odds td{ text-align:left; }
+  .class-up-badge{ white-space:normal; }
 }
 
 @media (max-width:480px){
