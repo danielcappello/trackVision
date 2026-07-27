@@ -299,10 +299,17 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   table.h2h td:first-child, table.form td:first-child{
     flex:1 1 100%;
   }
-  /* everything else flows left-to-right and wraps to a new row once it runs
-     out of room, rather than stacking one field per line */
-  table.entrants td:not(:first-child), table.odds td:not(:first-child),
-  table.h2h td:not(:first-child), table.form td:not(:first-child){
+  /* Entrants table: each remaining cell is already a deliberate group
+     (odds / form stats / class achievements) so each gets its own full-width
+     row — the chips *inside* a cell still wrap amongst themselves. */
+  table.entrants td:not(:first-child){
+    flex:1 1 100%;
+  }
+  /* Detail-panel tables (odds/h2h/form) have many small single-value columns,
+     so those flow left-to-right and wrap to a new row once they run out of
+     room, rather than stacking one field per line. */
+  table.odds td:not(:first-child), table.h2h td:not(:first-child),
+  table.form td:not(:first-child){
     flex:1 1 112px; min-width:112px;
   }
   table.entrants td[data-label]::before,
@@ -704,7 +711,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += '</div></div>';
 
     html += '<table class="entrants"><thead><tr>'+
-            '<th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>This class</th><th>Trials here</th>'+
+            '<th>Horse</th><th>Odds (win / place / lay)</th><th>Form (overall / track / trip / class / trials)</th><th>Class achievements</th>'+
             '</tr></thead><tbody>';
 
     entrants.forEach(function(ent){
@@ -714,7 +721,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         html += '<tr class="'+rowCls+'"><td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span>'+
                 '<div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
                 '<div class="horse-meta">SCRATCHED'+(ent.barrier!=null?' · Barrier '+ent.barrier:'')+'</div></td>'+
-                '<td colspan="6" class="no-data">—</td></tr>';
+                '<td colspan="3" class="no-data">—</td></tr>';
         return;
       }
       var compRuns = applyStatWindow(competitiveRuns(hid));
@@ -738,18 +745,27 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       var trialAtTrack = trialRuns(hid).filter(function(r){ return trackName(r[R_TRACK])===race.track; });
       var trialSummary = computeSummary(trialAtTrack.slice(0,10));
 
+      var formChips = '<div class="chip-row">'+
+              chip('Overall', overall)+
+              chip('Track', trackSummary)+
+              chip('Trip', distSummary)+
+              chip('Class', classSummary)+
+              (trialAtTrack.length? chip('Trials', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>')+
+              '</div>';
+
+      var achievementsHtml = (higherWin || higherPlace)
+        ? '<div class="chip-row">'+(higherWin? classAchievementBadge(higherWin,'win'):'')+(higherPlace? classAchievementBadge(higherPlace,'place'):'')+'</div>'
+        : '<div class="no-data" style="padding:0;">No wins/places recorded at a higher grade.</div>';
+
       html += '<tr class="'+rowCls+'" data-hid="'+hid+'">'+
               '<td><span class="barrier-chip">'+(ent.entrantnumber!=null?ent.entrantnumber:'-')+'</span>'+
               '<div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
               '<div class="horse-meta">Barrier '+(ent.barrier!=null?ent.barrier:'—')+' · '+escapeHtml(ent.jockey||'')+' · '+escapeHtml(ent.trainer||'')+'</div></td>'+
-              '<td data-label="Best odds">'+oddsChips(ent)+'</td>'+
-              '<td data-label="Overall">'+chip('W-P-S', overall)+'</td>'+
-              '<td data-label="This track">'+chip('W-P-S', trackSummary)+'</td>'+
-              '<td data-label="This trip">'+chip('W-P-S', distSummary)+'</td>'+
-              '<td data-label="This class">'+chip('W-P-S', classSummary)+(higherWin? classAchievementBadge(higherWin,'win'):'')+(higherPlace? classAchievementBadge(higherPlace,'place'):'')+'</td>'+
-              '<td data-label="Trials here">'+ (trialAtTrack.length? chip('T.starts', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>') +'</td>'+
+              '<td data-label="Odds (win / place / lay)">'+oddsChips(ent)+'</td>'+
+              '<td data-label="Form (overall / track / trip / class / trials)">'+formChips+'</td>'+
+              '<td data-label="Class achievements">'+achievementsHtml+'</td>'+
               '</tr>';
-      html += '<tr class="detail-row"><td colspan="7"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
+      html += '<tr class="detail-row"><td colspan="4"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
     });
 
     html += '</tbody></table>';
