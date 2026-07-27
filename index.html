@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Analyst — Race Form Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12140f;
+  --ledger:#1a1d16;
+  --ledger-2:#20241b;
+  --paper:#e9e4d4;
+  --paper-dim:#c9c2a9;
+  --line: #3a3f30;
+  --brass:#c79a4b;
+  --brass-dim:#8a6d38;
+  --turf:#4f8a5b;
+  --turf-bright:#7cc98a;
+  --turf-dim:#28361f;
+  --claret:#a8493f;
+  --claret-dim:#3a201d;
+  --slate:#5b7a99;
+  --slate-dim:#22303d;
+  --radius: 3px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #22261a 0%, transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, #1c2417 0%, transparent 55%),
+    var(--ink);
+  color:var(--paper);
+  font-family:'Inter', system-ui, sans-serif;
+  min-height:100vh;
+}
+::selection{ background:var(--brass); color:#1a1d16; }
+
+/* ---------- Header ---------- */
+header.top{
+  padding:22px 28px 16px;
+  border-bottom:1px solid var(--line);
+  display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+  flex-wrap:wrap;
+}
+.brand{ display:flex; align-items:baseline; gap:12px; }
+.brand h1{
+  font-family:'Fraunces', serif; font-weight:700; font-size:26px; letter-spacing:0.3px;
+  margin:0; color:var(--paper);
+}
+.brand .tag{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+  letter-spacing:1.6px; color:var(--brass); border:1px solid var(--brass-dim);
+  padding:3px 8px; border-radius:100px;
+}
+.controls{ display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+.ctrl{ display:flex; flex-direction:column; gap:4px; }
+.ctrl label{ font-size:10px; text-transform:uppercase; letter-spacing:1.1px; color:var(--paper-dim); font-family:'IBM Plex Mono',monospace;}
+.ctrl select, .ctrl input{
+  background:var(--ledger); color:var(--paper); border:1px solid var(--line);
+  padding:7px 10px; border-radius:var(--radius); font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+  min-width:132px;
+}
+.ctrl input[type="text"]{ min-width:190px; }
+.ctrl select:focus, .ctrl input:focus{ outline:2px solid var(--brass); outline-offset:1px; }
+
+/* ---------- Layout ---------- */
+.layout{ display:grid; grid-template-columns: 300px 1fr; min-height:calc(100vh - 92px); }
+aside.races{
+  border-right:1px solid var(--line);
+  overflow-y:auto; max-height:calc(100vh - 92px);
+  padding:10px 0;
+}
+.day-group{ margin-bottom:6px; }
+.day-head{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase;
+  letter-spacing:1.4px; color:var(--brass); padding:12px 16px 6px;
+}
+.track-head{
+  font-family:'Fraunces', serif; font-weight:600; font-size:14.5px; color:var(--paper);
+  padding:6px 16px 2px; opacity:.92;
+}
+.race-item{
+  display:flex; align-items:center; gap:10px; padding:7px 16px 7px 22px; cursor:pointer;
+  border-left:2px solid transparent; font-size:12.5px;
+}
+.race-item:hover{ background:var(--ledger); }
+.race-item.active{ background:var(--ledger-2); border-left-color:var(--brass); }
+.race-item .rno{
+  font-family:'IBM Plex Mono',monospace; color:var(--brass); font-weight:600; width:20px; flex:none;
+}
+.race-item .rmeta{ color:var(--paper-dim); font-size:11px; }
+.race-item .rcls{ color:var(--paper-dim); flex:1; text-align:right; font-size:10.5px; font-family:'IBM Plex Mono',monospace;}
+.race-item.trial .rno{ color:var(--slate); }
+
+main.board{ padding:22px 30px 60px; overflow-y:auto; max-height:calc(100vh - 92px); }
+
+.empty-state{ color:var(--paper-dim); padding:60px 10px; text-align:center; font-family:'Fraunces',serif; font-size:18px;}
+
+/* ---------- Race Card header ---------- */
+.race-header{
+  display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px;
+  border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:16px;
+}
+.race-header h2{ font-family:'Fraunces',serif; font-size:24px; margin:0 0 4px; font-weight:600; }
+.race-header .sub{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--paper-dim); letter-spacing:.4px;}
+.race-header .badge-trial{
+  background:var(--slate-dim); border:1px solid var(--slate); color:#bcd3e5;
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:1px;
+  padding:4px 9px; border-radius:100px;
+}
+.pill-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.pill{
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.6px; text-transform:uppercase;
+  color:var(--paper-dim); border:1px solid var(--line); padding:4px 9px; border-radius:100px;
+}
+
+/* ---------- Entrant table ---------- */
+table.entrants{ width:100%; border-collapse:collapse; }
+table.entrants thead th{
+  text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase;
+  letter-spacing:1px; color:var(--paper-dim); padding:6px 10px; border-bottom:1px solid var(--line);
+  font-weight:500;
+}
+tr.entrant-row{ border-bottom:1px solid var(--line); cursor:pointer; }
+tr.entrant-row:hover{ background:var(--ledger); }
+tr.entrant-row td{ padding:10px 10px; vertical-align:middle; font-size:13px;}
+tr.entrant-row.scratched{ opacity:.4; cursor:default; }
+tr.entrant-row.scratched:hover{ background:none; }
+.barrier-chip{
+  display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px;
+  border-radius:50%; border:1px solid var(--brass-dim); color:var(--brass); font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px; font-weight:600;
+}
+.horse-name{ font-weight:600; font-size:14px; color:var(--paper); font-family:'Fraunces',serif; }
+.horse-meta{ font-size:11px; color:var(--paper-dim); margin-top:2px; }
+.stat-chip{
+  display:inline-flex; flex-direction:column; align-items:center; gap:1px; min-width:56px;
+  padding:5px 8px; border-radius:var(--radius); border:1px solid var(--line); background:var(--ledger);
+  font-family:'IBM Plex Mono',monospace;
+}
+.stat-chip .k{ font-size:9px; text-transform:uppercase; letter-spacing:.6px; color:var(--paper-dim); }
+.stat-chip .v{ font-size:12.5px; font-weight:700; }
+.stat-chip.good{ background:var(--turf-dim); border-color:var(--turf); }
+.stat-chip.good .v{ color:var(--turf-bright); }
+.stat-chip.poor{ background:var(--claret-dim); border-color:var(--claret); }
+.stat-chip.poor .v{ color:#e79088; }
+.stat-chip.trial{ background:var(--slate-dim); border-color:var(--slate); }
+.stat-chip.trial .v{ color:#bcd3e5; }
+.stat-chip.none{ opacity:.5; }
+.chip-row{ display:flex; gap:6px; flex-wrap:wrap; }
+
+/* odds chips */
+.odds-chip{
+  display:inline-flex; flex-direction:column; align-items:center; gap:1px; min-width:64px;
+  padding:5px 8px; border-radius:var(--radius); border:1px solid var(--brass-dim); background:#241c10;
+  font-family:'IBM Plex Mono',monospace;
+}
+.odds-chip .k{ font-size:9px; text-transform:uppercase; letter-spacing:.6px; color:var(--paper-dim); }
+.odds-chip .v{ font-size:13px; font-weight:700; color:var(--brass); }
+.odds-chip .bk{ font-size:9px; color:var(--paper-dim); }
+.odds-chip.lay{ border-color:var(--slate); background:var(--slate-dim); }
+.odds-chip.lay .v{ color:#bcd3e5; }
+.odds-chip.none{ opacity:.4; }
+
+table.odds{ width:100%; border-collapse:collapse; margin-bottom:6px; }
+table.odds th{ text-align:right; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line); }
+table.odds th:first-child{ text-align:left; }
+table.odds td{ padding:6px 8px; font-size:12px; font-family:'IBM Plex Mono',monospace; border-bottom:1px solid rgba(255,255,255,0.03); text-align:right; }
+table.odds td:first-child{ text-align:left; font-family:'Inter',sans-serif; font-weight:600; color:var(--paper); }
+table.odds td.best{ color:var(--brass); font-weight:700; background:rgba(199,154,75,0.08); }
+table.odds td.neg{ color:#e79088; }
+table.odds td.pos{ color:var(--turf-bright); }
+table.odds .code-pill{ font-size:9px; text-transform:uppercase; border:1px solid var(--line); border-radius:100px; padding:1px 6px; color:var(--paper-dim); }
+
+
+/* expanded detail panel */
+tr.detail-row td{ padding:0; border-bottom:1px solid var(--line);}
+.detail-panel{ background:var(--ledger-2); padding:16px 20px 20px 46px; display:none; }
+.detail-panel.open{ display:block; }
+.detail-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:16px; }
+.stat-card{
+  border:1px solid var(--line); border-radius:var(--radius); padding:10px 12px; background:var(--ledger);
+}
+.stat-card .title{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.8px; color:var(--paper-dim); margin-bottom:6px;}
+.stat-card .figures{ display:flex; align-items:baseline; gap:8px; }
+.stat-card .big{ font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:700; }
+.stat-card .small{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper-dim); }
+.stat-card.good{ border-color:var(--turf); background:var(--turf-dim); }
+.stat-card.good .big{ color:var(--turf-bright); }
+.stat-card.poor{ border-color:var(--claret); background:var(--claret-dim); }
+.stat-card.poor .big{ color:#e79088; }
+.stat-card.trial{ border-color:var(--slate); background:var(--slate-dim); }
+.stat-card.trial .big{ color:#bcd3e5; }
+
+.section-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--brass); margin:16px 0 8px;}
+
+table.h2h{ width:100%; border-collapse:collapse; margin-bottom:6px; }
+table.h2h th{ text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line);}
+table.h2h td{ padding:6px 8px; font-size:12.5px; border-bottom:1px solid rgba(255,255,255,0.03); }
+.h2h-record{ font-family:'IBM Plex Mono',monospace; font-weight:700; }
+.h2h-record.good{ color:var(--turf-bright); }
+.h2h-record.poor{ color:#e79088; }
+.h2h-record.even{ color:var(--paper-dim); }
+
+table.form{ width:100%; border-collapse:collapse; }
+table.form th{ text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--paper-dim); padding:5px 8px; border-bottom:1px solid var(--line);}
+table.form td{ padding:6px 8px; font-size:12px; font-family:'IBM Plex Mono',monospace; border-bottom:1px solid rgba(255,255,255,0.03); }
+tr.form-row.trial td{ color:var(--slate); font-style:italic; }
+.finpos{ display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-weight:700; font-size:11px;}
+.finpos.win{ background:var(--turf); color:#0c1409; }
+.finpos.place{ background:var(--brass); color:#1a1d16; }
+.finpos.other{ background:var(--line); color:var(--paper-dim); }
+.no-data{ color:var(--paper-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:8px 0;}
+
+.search-hit{ font-size:12px; padding:6px 16px; cursor:pointer; color:var(--paper-dim); border-left:2px solid transparent; }
+.search-hit:hover{ background:var(--ledger); border-left-color:var(--brass); color:var(--paper); }
+.search-hit b{ color:var(--paper); }
+
+::-webkit-scrollbar{ width:9px; height:9px; }
+::-webkit-scrollbar-track{ background:transparent; }
+::-webkit-scrollbar-thumb{ background:var(--line); border-radius:5px; }
+
+@media (max-width:820px){
+  .layout{ grid-template-columns: 1fr; }
+  aside.races{ max-height:280px; border-right:none; border-bottom:1px solid var(--line); }
+  main.board{ max-height:none; }
+}
+
+/* ---------- Loading overlay ---------- */
+.loading-overlay{
+  position:fixed; inset:0; background:rgba(18,20,15,0.94); backdrop-filter:blur(2px);
+  display:flex; align-items:center; justify-content:center; z-index:999;
+}
+.loading-box{ text-align:center; max-width:420px; padding:0 20px; }
+.loading-title{ font-family:'Fraunces',serif; font-weight:700; font-size:26px; color:var(--paper); margin-bottom:10px; }
+.loading-sub{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--paper-dim); margin-bottom:16px; line-height:1.6; }
+.loading-bar{ width:280px; height:6px; border-radius:100px; background:var(--ledger); border:1px solid var(--line); margin:0 auto; overflow:hidden; }
+.loading-bar-fill{ height:100%; width:8%; background:var(--brass); border-radius:100px; transition:width .2s ease; }
+.loading-error .loading-title{ color:#e79088; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <h1>Form Analyst</h1>
+    <span class="tag">Race Form Guide</span>
+  </div>
+  <div class="controls">
+    <div class="ctrl">
+      <label for="searchInput">Find a horse</label>
+      <input id="searchInput" type="text" placeholder="Search by name…" autocomplete="off">
+    </div>
+    <div class="ctrl">
+      <label for="trackFilter">Track</label>
+      <select id="trackFilter"><option value="">All tracks</option></select>
+    </div>
+    <div class="ctrl">
+      <label for="statWindow">Sample</label>
+      <select id="statWindow">
+        <option value="all">All starts</option>
+        <option value="12m">Last 12 months</option>
+        <option value="10">Last 10 starts</option>
+        <option value="5" selected>Last 5 starts</option>
+      </select>
+    </div>
+    <div class="ctrl">
+      <label for="distTol">Distance range</label>
+      <select id="distTol">
+        <option value="0">Exact trip</option>
+        <option value="50">± 50m</option>
+        <option value="100" selected>± 100m</option>
+        <option value="200">± 200m</option>
+        <option value="400">± 400m</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="races" id="raceList"></aside>
+  <main class="board" id="board">
+    <div class="empty-state">Select a race on the left to view the field and form.</div>
+  </main>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="loading-title">Form Analyst</div>
+    <div class="loading-sub" id="loadingMsg">Loading fixtures…</div>
+    <div class="loading-bar"><div class="loading-bar-fill" id="loadingBarFill"></div></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------------------------------------------------------
+  // Data sources — these CSVs are fetched at runtime from the same
+  // repo/folder as this HTML file. Update the paths below if you
+  // keep them somewhere else (e.g. './data/racing_fixtures.csv').
+  // ---------------------------------------------------------------
+  var FIXTURES_URL = './racing_fixtures.csv';
+  var RESULTS_URL  = './racing_results.csv';
+
+  var TRACKS = [];
+  var CLASSES = [];
+  var RACES = [];           // array of race objects (upcoming fixtures)
+  var HORSES = {};          // horseid -> array of run records
+
+  // Run record indices:
+  // 0 raceid, 1 dateDays, 2 trackIdx, 3 distance, 4 classIdx, 5 trialFlag(0/1),
+  // 6 finish, 7 fieldsize, 8 margin, 9 sp, 10 trackcondition
+  var R_RID=0,R_DATE=1,R_TRACK=2,R_DIST=3,R_CLASS=4,R_TRIAL=5,R_FIN=6,R_FS=7,R_MGN=8,R_SP=9,R_COND=10;
+
+  var todayDays = Math.floor(Date.now()/86400000) - Math.floor(new Date(2020,0,1).getTime()/86400000);
+
+  var state = {
+    activeRaceId: null,
+    statWindow: '5',
+    distTol: 100,
+    trackFilterName: '',
+    expanded: {}   // horseid -> bool (per race context, reset when race changes)
+  };
+
+  // ---------- helpers ----------
+  function fmtDate(days){
+    if(days==null) return '—';
+    var d = new Date(2020,0,1);
+    d.setDate(d.getDate()+days);
+    var mon = d.toLocaleString('en-US',{month:'short'});
+    return d.getDate()+' '+mon+' '+d.getFullYear();
+  }
+
+  function isValidFinish(run){
+    return run[R_FIN]!=null && run[R_FS]!=null && run[R_FIN] <= run[R_FS];
+  }
+  function isWin(run){ return isValidFinish(run) && run[R_FIN]===1; }
+  function isPlace(run){ return isValidFinish(run) && run[R_FIN]<=3; }
+
+  function applyStatWindow(runs){
+    // runs already sorted desc by date
+    if(state.statWindow === 'all') return runs;
+    if(state.statWindow === '12m'){
+      return runs.filter(function(r){ return r[R_DATE]!=null && (todayDays - r[R_DATE]) <= 365; });
+    }
+    var n = parseInt(state.statWindow,10);
+    return runs.slice(0,n);
+  }
+
+  function computeSummary(runs){
+    var starts = runs.length;
+    var wins=0, places=0;
+    runs.forEach(function(r){ if(isWin(r)) wins++; if(isPlace(r)) places++; });
+    var winPct = starts? Math.round(wins/starts*100):0;
+    var placePct = starts? Math.round(places/starts*100):0;
+    return {starts:starts,wins:wins,places:places,winPct:winPct,placePct:placePct};
+  }
+
+  function qualityClass(summary, minSample){
+    minSample = minSample || 2;
+    if(summary.starts < minSample) return 'none';
+    if(summary.winPct>=25 || summary.placePct>=50) return 'good';
+    if(summary.starts>=3 && summary.wins===0 && summary.placePct < 20) return 'poor';
+    return '';
+  }
+
+  function getHorseRuns(hid){
+    return HORSES[hid] || [];
+  }
+
+  function competitiveRuns(hid){
+    return getHorseRuns(hid).filter(function(r){ return r[R_TRIAL]===0; });
+  }
+  function trialRuns(hid){
+    return getHorseRuns(hid).filter(function(r){ return r[R_TRIAL]===1; });
+  }
+
+  function trackName(idx){ return TRACKS[idx]; }
+  function className(idx){ return CLASSES[idx]; }
+
+  // ---------- build race list (sidebar) ----------
+  function buildRaceList(){
+    var el = document.getElementById('raceList');
+    el.innerHTML='';
+    var byDate = {};
+    RACES.forEach(function(race){
+      if(state.trackFilterName && race.track !== state.trackFilterName) return;
+      if(!byDate[race.date]) byDate[race.date]={};
+      if(!byDate[race.date][race.track]) byDate[race.date][race.track]=[];
+      byDate[race.date][race.track].push(race);
+    });
+    var dates = Object.keys(byDate).sort();
+    dates.forEach(function(date){
+      var dg = document.createElement('div'); dg.className='day-group';
+      var dh = document.createElement('div'); dh.className='day-head';
+      dh.textContent = fmtDateStr(date);
+      dg.appendChild(dh);
+      var tracks = Object.keys(byDate[date]).sort();
+      tracks.forEach(function(trk){
+        var th = document.createElement('div'); th.className='track-head'; th.textContent = trk;
+        dg.appendChild(th);
+        var races = byDate[date][trk].sort(function(a,b){return (a.race||0)-(b.race||0);});
+        races.forEach(function(race){
+          var item = document.createElement('div');
+          item.className = 'race-item' + (race.trialjumpout?' trial':'') + (race.raceid===state.activeRaceId?' active':'');
+          item.innerHTML = '<span class="rno">R'+(race.race!=null?race.race:'?')+'</span>'+
+                            '<span class="rmeta">'+(race.distance||'?')+'m'+(race.trialjumpout?' · Trial':'')+'</span>'+
+                            '<span class="rcls">'+(race.raceclass||'')+'</span>';
+          item.addEventListener('click', function(){
+            state.activeRaceId = race.raceid;
+            state.expanded = {};
+            buildRaceList();
+            renderRace(race);
+          });
+          dg.appendChild(item);
+        });
+      });
+      el.appendChild(dg);
+    });
+  }
+
+  function fmtDateStr(dateStr){
+    var parts = dateStr.split('-');
+    var d = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+    return d.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
+  }
+
+  // ---------- populate track filter dropdown ----------
+  function buildTrackFilter(){
+    var sel = document.getElementById('trackFilter');
+    var names = Array.from(new Set(RACES.map(function(r){return r.track;}))).sort();
+    names.forEach(function(n){
+      var o = document.createElement('option'); o.value=n; o.textContent=n; sel.appendChild(o);
+    });
+  }
+
+  // ---------- stat chip builder ----------
+  function chip(label, summary, extraClass){
+    var cls = 'stat-chip ' + (extraClass||'') + ' ' + (summary.starts? qualityClass(summary):'none');
+    var val = summary.starts ? (summary.wins+'-'+summary.places+'-'+summary.starts) : '—';
+    var sub = summary.starts ? (summary.winPct+'% W') : 'no runs';
+    return '<div class="'+cls+'" title="'+label+'"><div class="k">'+label+'</div><div class="v">'+val+'</div><div class="k">'+sub+'</div></div>';
+  }
+
+  function money(v){
+    if(v==null) return '—';
+    var sign = v<0? '-' : '';
+    return sign+'$'+Math.abs(v).toFixed(2);
+  }
+  function priceStr(v){ return v==null? '—' : v.toFixed(2); }
+
+  function oddsChips(ent){
+    if(!ent.odds || !ent.odds.length){
+      return '<div class="odds-chip none"><div class="k">Odds</div><div class="v">—</div></div>';
+    }
+    var w = ent.bestWin, p = ent.bestPlace, l = ent.layPrice;
+    var html = '<div class="chip-row">';
+    html += '<div class="odds-chip"><div class="k">Win</div><div class="v">'+(w?priceStr(w.price):'—')+'</div><div class="bk">'+(w?escapeHtml(w.bk):'')+'</div></div>';
+    html += '<div class="odds-chip"><div class="k">Place</div><div class="v">'+(p?priceStr(p.price):'—')+'</div><div class="bk">'+(p?escapeHtml(p.bk):'')+'</div></div>';
+    html += '<div class="odds-chip lay"><div class="k">Lay</div><div class="v">'+(l!=null?priceStr(l):'—')+'</div><div class="bk">Betfair</div></div>';
+    html += '</div>';
+    return html;
+  }
+
+  // ---------- render selected race ----------
+  function renderRace(race){
+    var board = document.getElementById('board');
+    var entrants = race.entrants.slice().sort(function(a,b){
+      var ba = a.barrier!=null?a.barrier:999, bb=b.barrier!=null?b.barrier:999;
+      return ba-bb;
+    });
+
+    var html = '';
+    html += '<div class="race-header">';
+    html += '<div><h2>'+race.track+' — Race '+(race.race!=null?race.race:'?')+'</h2>';
+    html += '<div class="sub">'+fmtDateStr(race.date)+' · '+(race.distance||'?')+'m · '+ (race.raceclass||'') +
+            (race.trackcondition? (' · '+race.trackcondition):'') + ' · Field of '+(race.fieldsize||entrants.length)+'</div></div>';
+    html += '<div class="pill-row">';
+    if(race.trialjumpout) html += '<span class="badge-trial">Trial / Jumpout</span>';
+    html += '<span class="pill">Sample: '+ sampleLabel() +'</span>';
+    html += '<span class="pill">Distance range: '+ (state.distTol===0?'exact':'±'+state.distTol+'m') +'</span>';
+    html += '</div></div>';
+
+    html += '<table class="entrants"><thead><tr>'+
+            '<th>№</th><th>Horse</th><th>Best odds</th><th>Overall</th><th>This track</th><th>This trip</th><th>Trials here</th>'+
+            '</tr></thead><tbody>';
+
+    entrants.forEach(function(ent){
+      var hid = ent.horseid;
+      var rowCls = 'entrant-row' + (ent.scratched?' scratched':'');
+      if(ent.scratched){
+        html += '<tr class="'+rowCls+'"><td><span class="barrier-chip">'+(ent.barrier!=null?ent.barrier:'-')+'</span></td>'+
+                '<td><div class="horse-name">'+escapeHtml(ent.name)+'</div><div class="horse-meta">SCRATCHED</div></td>'+
+                '<td colspan="5" class="no-data">—</td></tr>';
+        return;
+      }
+      var compRuns = applyStatWindow(competitiveRuns(hid));
+      var overall = computeSummary(compRuns);
+
+      var trackRuns = applyStatWindow(competitiveRuns(hid).filter(function(r){ return trackName(r[R_TRACK])===race.track; }));
+      var trackSummary = computeSummary(trackRuns);
+
+      var distRuns = applyStatWindow(competitiveRuns(hid).filter(function(r){
+        if(race.distance==null || r[R_DIST]==null) return false;
+        return Math.abs(r[R_DIST]-race.distance) <= state.distTol;
+      }));
+      var distSummary = computeSummary(distRuns);
+
+      var trialAtTrack = trialRuns(hid).filter(function(r){ return trackName(r[R_TRACK])===race.track; });
+      var trialSummary = computeSummary(trialAtTrack.slice(0,10));
+
+      html += '<tr class="'+rowCls+'" data-hid="'+hid+'">'+
+              '<td><span class="barrier-chip">'+(ent.barrier!=null?ent.barrier:'-')+'</span></td>'+
+              '<td><div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
+              '<div class="horse-meta">'+escapeHtml(ent.jockey||'')+' · '+escapeHtml(ent.trainer||'')+'</div></td>'+
+              '<td>'+oddsChips(ent)+'</td>'+
+              '<td>'+chip('W-P-S', overall)+'</td>'+
+              '<td>'+chip('W-P-S', trackSummary)+'</td>'+
+              '<td>'+chip('W-P-S', distSummary)+'</td>'+
+              '<td>'+ (trialAtTrack.length? chip('T.starts', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>') +'</td>'+
+              '</tr>';
+      html += '<tr class="detail-row"><td colspan="7"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
+    });
+
+    html += '</tbody></table>';
+    board.innerHTML = html;
+
+    // attach click handlers
+    entrants.forEach(function(ent){
+      if(ent.scratched) return;
+      var hid = ent.horseid;
+      var tr = board.querySelector('tr[data-hid="'+cssEscape(hid)+'"]');
+      if(tr){
+        tr.addEventListener('click', function(){ toggleDetail(hid, race, entrants); });
+      }
+    });
+
+    // restore any expanded rows
+    Object.keys(state.expanded).forEach(function(hid){
+      if(state.expanded[hid]) renderDetail(hid, race, entrants, true);
+    });
+  }
+
+  function sampleLabel(){
+    if(state.statWindow==='all') return 'all starts';
+    if(state.statWindow==='12m') return 'last 12 months';
+    return 'last '+state.statWindow+' starts';
+  }
+
+  function cssEscape(s){ return String(s).replace(/[^a-zA-Z0-9_-]/g,'_'); }
+  function escapeHtml(s){
+    if(s==null) return '';
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function toggleDetail(hid, race, entrants){
+    state.expanded[hid] = !state.expanded[hid];
+    renderDetail(hid, race, entrants, state.expanded[hid]);
+  }
+
+  function renderDetail(hid, race, entrants, open){
+    var panel = document.getElementById('detail-'+hid);
+    if(!panel) return;
+    if(!open){ panel.className='detail-panel'; panel.innerHTML=''; return; }
+    panel.className='detail-panel open';
+
+    var allComp = competitiveRuns(hid);
+    var overallW = computeSummary(applyStatWindow(allComp));
+    var trackW = computeSummary(applyStatWindow(allComp.filter(function(r){return trackName(r[R_TRACK])===race.track;})));
+    var distW = computeSummary(applyStatWindow(allComp.filter(function(r){
+      if(race.distance==null||r[R_DIST]==null) return false;
+      return Math.abs(r[R_DIST]-race.distance)<=state.distTol;
+    })));
+    var trialsAtTrack = trialRuns(hid).filter(function(r){return trackName(r[R_TRACK])===race.track;});
+    var trialSummary = computeSummary(trialsAtTrack);
+    var allTrials = trialRuns(hid);
+    var allTrialsSummary = computeSummary(allTrials);
+
+    var html = '<div class="detail-grid">';
+    html += statCard('Overall record ('+sampleLabel()+')', overallW);
+    html += statCard('At '+race.track, trackW);
+    html += statCard('At this trip ('+(state.distTol===0?'exact':'±'+state.distTol+'m')+')', distW);
+    html += statCard('Trials/jumpouts at '+race.track, trialSummary, 'trial');
+    html += statCard('All trials/jumpouts', allTrialsSummary, 'trial');
+    html += '</div>';
+
+    // Odds & promo comparison across bookmakers
+    var entOdds = null;
+    for(var i=0;i<race.entrants.length;i++){
+      if(race.entrants[i].horseid===hid){ entOdds = race.entrants[i]; break; }
+    }
+    if(entOdds && entOdds.odds && entOdds.odds.length){
+      html += '<div class="section-label">Odds &amp; promo comparison</div>';
+      var bestWinPrice = entOdds.bestWin? entOdds.bestWin.price : null;
+      var bestPlacePrice = entOdds.bestPlace? entOdds.bestPlace.price : null;
+      html += '<table class="odds"><thead><tr><th>Bookmaker</th><th>Win</th><th>Place</th><th>Market</th>'+
+              '<th>Lay (Betfair)</th><th>Qualifying P/L</th><th>Bonus turnover</th><th>Promo 3rd</th></tr></thead><tbody>';
+      var sortedOdds = entOdds.odds.slice().sort(function(a,b){ return (b.win||0)-(a.win||0); });
+      sortedOdds.forEach(function(o){
+        html += '<tr>';
+        html += '<td>'+escapeHtml(o.bk)+'</td>';
+        html += '<td class="'+(o.win===bestWinPrice?'best':'')+'">'+priceStr(o.win)+'</td>';
+        html += '<td class="'+(o.place===bestPlacePrice?'best':'')+'">'+priceStr(o.place)+'</td>';
+        html += '<td><span class="code-pill">'+escapeHtml(o.code||'—')+'</span></td>';
+        html += '<td>'+priceStr(o.lay)+'</td>';
+        html += '<td class="'+(o.qualifyingPl!=null&&o.qualifyingPl<0?'neg':(o.qualifyingPl!=null&&o.qualifyingPl>0?'pos':''))+'">'+money(o.qualifyingPl)+'</td>';
+        html += '<td>'+money(o.bonusTurnover)+'</td>';
+        html += '<td class="'+(o.promo3rd!=null&&o.promo3rd<0?'neg':(o.promo3rd!=null&&o.promo3rd>0?'pos':''))+'">'+money(o.promo3rd)+'</td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      html += '<div class="no-data" style="margin-top:-4px;">Highest win &amp; place prices highlighted. Lay price is the Betfair exchange lay, shared across bookmakers. Qualifying P/L, bonus turnover and promo 3rd figures are bookmaker-specific promotional calculations.</div>';
+    }
+
+    // Head to head vs rivals in this race
+    html += '<div class="section-label">Against these rivals (competitive form)</div>';
+    var rivals = entrants.filter(function(e){ return e.horseid!==hid && !e.scratched; });
+    var raceidMap = {};
+    allComp.forEach(function(r){ raceidMap[r[R_RID]] = r; });
+
+    var h2hRows = [];
+    rivals.forEach(function(rival){
+      var rivalComp = competitiveRuns(rival.horseid);
+      var meetings = [];
+      rivalComp.forEach(function(rr){
+        var mine = raceidMap[rr[R_RID]];
+        if(mine){
+          meetings.push({mine:mine, rival:rr});
+        }
+      });
+      if(meetings.length===0) return;
+      var iWon=0, rivalWon=0;
+      meetings.forEach(function(m){
+        var myFin = isValidFinish(m.mine)? m.mine[R_FIN] : 999;
+        var rvFin = isValidFinish(m.rival)? m.rival[R_FIN] : 999;
+        if(myFin < rvFin) iWon++;
+        else if(rvFin < myFin) rivalWon++;
+      });
+      h2hRows.push({name:rival.name, meetings:meetings.length, iWon:iWon, rivalWon:rivalWon});
+    });
+
+    if(h2hRows.length===0){
+      html += '<div class="no-data">No prior meetings on record against runners in this race.</div>';
+    } else {
+      html += '<table class="h2h"><thead><tr><th>Rival</th><th>Meetings</th><th>Record</th></tr></thead><tbody>';
+      h2hRows.sort(function(a,b){ return b.meetings-a.meetings; });
+      h2hRows.forEach(function(row){
+        var cls = 'even';
+        if(row.iWon>row.rivalWon) cls='good';
+        else if(row.rivalWon>row.iWon) cls='poor';
+        html += '<tr><td>'+escapeHtml(row.name)+'</td><td>'+row.meetings+'</td>'+
+                '<td class="h2h-record '+cls+'">'+row.iWon+'-'+row.rivalWon+ (row.meetings-row.iWon-row.rivalWon>0? ' ('+(row.meetings-row.iWon-row.rivalWon)+' dead-heat/tie)':'') +'</td></tr>';
+      });
+      html += '</tbody></table>';
+    }
+
+    // Recent form line (competitive + trials combined, distinctly styled)
+    html += '<div class="section-label">Recent starts</div>';
+    var combined = getHorseRuns(hid).slice(0, 15);
+    if(combined.length===0){
+      html += '<div class="no-data">No recorded starts.</div>';
+    } else {
+      html += '<table class="form"><thead><tr><th>Date</th><th>Track</th><th>Trip</th><th>Class</th><th>Type</th><th>Fin</th><th>Margin</th><th>SP</th></tr></thead><tbody>';
+      combined.forEach(function(r){
+        var trial = r[R_TRIAL]===1;
+        var finBadge;
+        if(!isValidFinish(r)){ finBadge = '<span class="finpos other">—</span>'; }
+        else if(r[R_FIN]===1){ finBadge = '<span class="finpos win">'+r[R_FIN]+'</span>'; }
+        else if(r[R_FIN]<=3){ finBadge = '<span class="finpos place">'+r[R_FIN]+'</span>'; }
+        else { finBadge = '<span class="finpos other">'+r[R_FIN]+'</span>'; }
+        html += '<tr class="form-row'+(trial?' trial':'')+'">'+
+                '<td>'+fmtDate(r[R_DATE])+'</td>'+
+                '<td>'+escapeHtml(trackName(r[R_TRACK]))+'</td>'+
+                '<td>'+(r[R_DIST]!=null?r[R_DIST]+'m':'—')+'</td>'+
+                '<td>'+escapeHtml(className(r[R_CLASS]))+'</td>'+
+                '<td>'+(trial?'Trial/JO':'Race')+'</td>'+
+                '<td>'+finBadge+ (r[R_FS]!=null? ' <span style="color:var(--paper-dim)">/'+r[R_FS]+'</span>':'') +'</td>'+
+                '<td>'+(r[R_MGN]!=null? r[R_MGN]+'L':'—')+'</td>'+
+                '<td>'+(r[R_SP]!=null? '$'+r[R_SP].toFixed(2):'—')+'</td>'+
+                '</tr>';
+      });
+      html += '</tbody></table>';
+    }
+
+    panel.innerHTML = html;
+  }
+
+  function statCard(title, summary, extraClass){
+    var cls = 'stat-card ' + (extraClass||'') + ' ' + (summary.starts? qualityClass(summary): '');
+    var big = summary.starts? (summary.wins+'-'+summary.places+'-'+summary.starts) : 'No runs';
+    var small = summary.starts? (summary.winPct+'% win · '+summary.placePct+'% placed') : 'in this sample';
+    return '<div class="'+cls+'"><div class="title">'+title+'</div><div class="figures"><div class="big">'+big+'</div></div><div class="small">'+small+'</div></div>';
+  }
+
+  // ---------- search ----------
+  function buildHorseIndex(){
+    var idx = [];
+    RACES.forEach(function(race){
+      race.entrants.forEach(function(ent){
+        idx.push({name:ent.name, horseid:ent.horseid, race:race});
+      });
+    });
+    return idx;
+  }
+  var horseIndex = [];
+
+  function handleSearch(q){
+    var boardResults = document.getElementById('searchResults');
+    if(boardResults){ boardResults.remove(); }
+    if(!q || q.length<2) return;
+    var ql = q.toLowerCase();
+    var matches = horseIndex.filter(function(h){ return h.name && h.name.toLowerCase().indexOf(ql)>=0; }).slice(0,12);
+    var container = document.createElement('div');
+    container.id='searchResults';
+    container.style.position='absolute';
+    container.style.background='var(--ledger)';
+    container.style.border='1px solid var(--line)';
+    container.style.borderRadius='4px';
+    container.style.marginTop='4px';
+    container.style.zIndex='50';
+    container.style.minWidth='260px';
+    container.style.maxHeight='260px';
+    container.style.overflowY='auto';
+    container.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)';
+    if(matches.length===0){
+      container.innerHTML = '<div class="search-hit">No horses found in upcoming fixtures.</div>';
+    } else {
+      matches.forEach(function(m){
+        var div = document.createElement('div');
+        div.className='search-hit';
+        div.innerHTML = '<b>'+escapeHtml(m.name)+'</b> — '+escapeHtml(m.race.track)+' R'+m.race.race;
+        div.addEventListener('click', function(){
+          state.activeRaceId = m.race.raceid;
+          state.expanded = {}; state.expanded[m.horseid]=true;
+          buildRaceList();
+          renderRace(m.race);
+          setTimeout(function(){
+            var el = document.getElementById('detail-'+m.horseid);
+            if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+          }, 50);
+          container.remove();
+          document.getElementById('searchInput').value='';
+        });
+        container.appendChild(div);
+      });
+    }
+    var input = document.getElementById('searchInput');
+    input.parentNode.style.position='relative';
+    input.parentNode.appendChild(container);
+  }
+
+  // ---------- wire up controls ----------
+  function init(){
+    horseIndex = buildHorseIndex();
+    buildTrackFilter();
+    buildRaceList();
+
+    document.getElementById('trackFilter').addEventListener('change', function(e){
+      state.trackFilterName = e.target.value;
+      buildRaceList();
+    });
+    document.getElementById('statWindow').addEventListener('change', function(e){
+      state.statWindow = e.target.value;
+      rerenderActive();
+    });
+    document.getElementById('distTol').addEventListener('change', function(e){
+      state.distTol = parseInt(e.target.value,10);
+      rerenderActive();
+    });
+    document.getElementById('searchInput').addEventListener('input', function(e){
+      handleSearch(e.target.value.trim());
+    });
+    document.addEventListener('click', function(e){
+      var results = document.getElementById('searchResults');
+      if(results && !results.contains(e.target) && e.target.id!=='searchInput'){
+        results.remove();
+      }
+    });
+  }
+
+  function rerenderActive(){
+    if(!state.activeRaceId) return;
+    var race = RACES.find(function(r){ return r.raceid===state.activeRaceId; });
+    if(race) renderRace(race);
+  }
+
+  // =================================================================
+  // CSV loading & parsing — runs at page load, fetching the two CSVs
+  // from the same folder as this HTML file.
+  // =================================================================
+
+  // Minimal RFC4180-ish line parser: handles quoted fields, embedded
+  // commas, and "" escaped quotes. Assumes no embedded newlines inside
+  // quoted fields (true for both source files).
+  function parseCsvLine(line){
+    var fields = [];
+    var i = 0, n = line.length;
+    while(true){
+      var field;
+      if(line.charCodeAt(i)===34 /* " */){
+        i++;
+        var buf = '';
+        while(i<n){
+          var c = line.charCodeAt(i);
+          if(c===34){
+            if(line.charCodeAt(i+1)===34){ buf+='"'; i+=2; continue; }
+            i++; break;
+          }
+          buf += line[i]; i++;
+        }
+        while(i<n && line.charCodeAt(i)!==44) i++; // skip to comma
+        field = buf;
+      } else {
+        var start = i;
+        while(i<n && line.charCodeAt(i)!==44) i++;
+        field = line.slice(start,i);
+      }
+      fields.push(field);
+      if(i>=n) break;
+      i++; // skip comma
+    }
+    return fields;
+  }
+
+  // Iterate over lines of a large string without materializing a full
+  // array of lines up front (keeps peak memory down for the ~150MB
+  // results file). Assumes \n line endings (strips a trailing \r).
+  function forEachLine(text, cb){
+    var pos = 0, len = text.length;
+    while(pos < len){
+      var nl = text.indexOf('\n', pos);
+      var line;
+      if(nl === -1){ line = text.slice(pos); pos = len; }
+      else { line = text.slice(pos, nl); pos = nl+1; }
+      if(line.length && line.charCodeAt(line.length-1)===13) line = line.slice(0,-1);
+      if(line.length) cb(line);
+    }
+  }
+
+  function toDaysFromDateStr(d){
+    if(!d) return null;
+    var p = d.split('-');
+    if(p.length!==3) return null;
+    var epoch = Date.UTC(2020,0,1);
+    var dt = Date.UTC(parseInt(p[0],10), parseInt(p[1],10)-1, parseInt(p[2],10));
+    if(isNaN(dt)) return null;
+    return Math.round((dt-epoch)/86400000);
+  }
+  function toNum(x){ if(x==null||x==='') return null; var n=parseFloat(x); return isNaN(n)?null:n; }
+  function toInt(x){ var n=toNum(x); return n==null?null:Math.round(n); }
+  function rnd2(x){ var n=toNum(x); return n==null?null:Math.round(n*100)/100; }
+
+  // Fixed column positions for racing_fixtures.csv. Positional (not by
+  // header name) because the header contains two columns named "name"
+  // (horse name, then bookmaker name) which would collide as an object key.
+  var FIX_COLS = {
+    state:0, track:1, race:2, distance:3, trackcondition:4, trackrating:5,
+    date:6, meetid:7, raceid:8, racestatus:9, raceclass:10, fieldsize:11,
+    trialjumpout:12, horseid:13, name:14, entrantnumber:15, barrier:16,
+    weight:17, scratched:18, jockey:19, trainer:20,
+    first_competitive_race:21, raceno_since_90day_break:22, raceno_since_freshened:23,
+    start_time:27,
+    bookmaker:31, win_price:32, place_price:33, code:34, lay_price:35,
+    market_base_rate:36, lay_stake:37, qualifying_pl:38, bonus_turnover:39,
+    promo_2nd:40, promo_3rd:41, promo_4th:42, last_5_finishes:43
+  };
+
+  function parseFixtures(text){
+    var racesMap = {};
+    var fixtureHorseIds = {};
+    var first = true;
+    forEachLine(text, function(line){
+      if(first){ first=false; return; } // header
+      var row = parseCsvLine(line);
+      if(row.length < 21) return;
+      var rid = row[FIX_COLS.raceid], hid = row[FIX_COLS.horseid];
+      if(!rid || !hid) return;
+      fixtureHorseIds[hid] = true;
+
+      var race = racesMap[rid];
+      if(!race){
+        race = racesMap[rid] = {
+          raceid: rid,
+          state: row[FIX_COLS.state],
+          track: row[FIX_COLS.track],
+          date: row[FIX_COLS.date],
+          race: toInt(row[FIX_COLS.race]),
+          distance: toInt(row[FIX_COLS.distance]),
+          trackcondition: row[FIX_COLS.trackcondition],
+          trackrating: row[FIX_COLS.trackrating],
+          raceclass: row[FIX_COLS.raceclass],
+          fieldsize: toInt(row[FIX_COLS.fieldsize]),
+          trialjumpout: row[FIX_COLS.trialjumpout]==='true',
+          starttime: row[FIX_COLS.start_time],
+          entrantsMap: {}
+        };
+      }
+      var ent = race.entrantsMap[hid];
+      if(!ent){
+        ent = race.entrantsMap[hid] = {
+          horseid: hid,
+          name: row[FIX_COLS.name],
+          entrantnumber: toInt(row[FIX_COLS.entrantnumber]),
+          barrier: toInt(row[FIX_COLS.barrier]),
+          weight: toNum(row[FIX_COLS.weight]),
+          scratched: row[FIX_COLS.scratched]==='true',
+          jockey: row[FIX_COLS.jockey],
+          trainer: row[FIX_COLS.trainer],
+          firstCompetitiveRace: row[FIX_COLS.first_competitive_race]==='true',
+          racesSince90dayBreak: toInt(row[FIX_COLS.raceno_since_90day_break]),
+          racesSinceFreshened: toInt(row[FIX_COLS.raceno_since_freshened]),
+          odds: []
+        };
+      }
+      var bookmaker = (row[FIX_COLS.bookmaker]||'').trim();
+      var winPrice = toNum(row[FIX_COLS.win_price]);
+      if(bookmaker && winPrice!=null){
+        ent.odds.push({
+          bk: bookmaker, win: rnd2(row[FIX_COLS.win_price]), place: rnd2(row[FIX_COLS.place_price]),
+          code: row[FIX_COLS.code], lay: rnd2(row[FIX_COLS.lay_price]),
+          baseRate: rnd2(row[FIX_COLS.market_base_rate]), layStake: rnd2(row[FIX_COLS.lay_stake]),
+          qualifyingPl: rnd2(row[FIX_COLS.qualifying_pl]), bonusTurnover: rnd2(row[FIX_COLS.bonus_turnover]),
+          promo2nd: rnd2(row[FIX_COLS.promo_2nd]), promo3rd: rnd2(row[FIX_COLS.promo_3rd]), promo4th: rnd2(row[FIX_COLS.promo_4th]),
+          last5: row[FIX_COLS.last_5_finishes]
+        });
+      }
+    });
+
+    var races = [];
+    Object.keys(racesMap).forEach(function(rid){
+      var race = racesMap[rid];
+      var entrants = Object.keys(race.entrantsMap).map(function(hid){ return race.entrantsMap[hid]; });
+      entrants.forEach(function(ent){
+        if(ent.odds.length){
+          var bestWin=null, bestPlace=null, maxLay=null;
+          ent.odds.forEach(function(o){
+            if(o.win!=null && (!bestWin || o.win>bestWin.win)) bestWin=o;
+            if(o.place!=null && (!bestPlace || o.place>bestPlace.place)) bestPlace=o;
+            if(o.lay!=null && (maxLay==null || o.lay>maxLay)) maxLay=o.lay;
+          });
+          ent.bestWin = bestWin? {price:bestWin.win, bk:bestWin.bk} : null;
+          ent.bestPlace = bestPlace? {price:bestPlace.place, bk:bestPlace.bk} : null;
+          ent.layPrice = maxLay;
+        } else {
+          ent.bestWin=null; ent.bestPlace=null; ent.layPrice=null;
+        }
+      });
+      entrants.sort(function(a,b){ return (a.barrier!=null?a.barrier:999)-(b.barrier!=null?b.barrier:999); });
+      race.entrants = entrants;
+      delete race.entrantsMap;
+      races.push(race);
+    });
+    races.sort(function(a,b){
+      if(a.date!==b.date) return a.date<b.date?-1:1;
+      if(a.track!==b.track) return a.track<b.track?-1:1;
+      return (a.race||0)-(b.race||0);
+    });
+
+    return {races:races, fixtureHorseIds:fixtureHorseIds};
+  }
+
+  function parseResults(text, fixtureHorseIds){
+    var trackIdx={}, trackList=[];
+    var classIdx={}, classList=[];
+    function getIdx(map,list,val){
+      if(!(val in map)){ map[val]=list.length; list.push(val); }
+      return map[val];
+    }
+    var colIdx = {};
+    var runsByHorse = {};
+    var first = true;
+    forEachLine(text, function(line){
+      if(first){
+        first=false;
+        var header = parseCsvLine(line);
+        header.forEach(function(h,i){ colIdx[h]=i; });
+        return;
+      }
+      var row = parseCsvLine(line);
+      var hid = row[colIdx.horseid];
+      if(!hid || !fixtureHorseIds[hid]) return;
+      if(row[colIdx.scratched]==='true') return;
+      var trk = row[colIdx.track] || 'Unknown';
+      var cls = row[colIdx.raceclass] || 'Unknown';
+      var ti = getIdx(trackIdx, trackList, trk);
+      var ci = getIdx(classIdx, classList, cls);
+      var rec = [
+        row[colIdx.raceid],
+        toDaysFromDateStr(row[colIdx.date]),
+        ti,
+        toInt(row[colIdx.distance]),
+        ci,
+        row[colIdx.trialjumpout]==='true' ? 1 : 0,
+        toInt(row[colIdx.finish]),
+        toInt(row[colIdx.fieldsize]),
+        toNum(row[colIdx.margin]),
+        toNum(row[colIdx.sp]),
+        row[colIdx.trackcondition] || ''
+      ];
+      (runsByHorse[hid] || (runsByHorse[hid]=[])).push(rec);
+    });
+
+    Object.keys(runsByHorse).forEach(function(hid){
+      runsByHorse[hid].sort(function(a,b){
+        var ad=a[1], bd=b[1];
+        if(ad==null && bd==null) return 0;
+        if(ad==null) return 1;
+        if(bd==null) return -1;
+        return bd-ad;
+      });
+    });
+
+    return {horses:runsByHorse, tracks:trackList, classes:classList};
+  }
+
+  // ---- fetch with progress, used for both CSV files ----
+  function fetchTextWithProgress(url, label){
+    return fetch(url).then(function(res){
+      if(!res.ok) throw new Error('HTTP '+res.status+' loading '+url);
+      var totalStr = res.headers.get('Content-Length');
+      var total = totalStr ? parseInt(totalStr,10) : 0;
+      if(!res.body || !total){
+        setLoading(label, null);
+        return res.text();
+      }
+      var reader = res.body.getReader();
+      var received = 0;
+      var chunks = [];
+      function pump(){
+        return reader.read().then(function(result){
+          if(result.done){
+            var full = new Uint8Array(received);
+            var offset=0;
+            for(var i=0;i<chunks.length;i++){ full.set(chunks[i], offset); offset+=chunks[i].length; }
+            return new TextDecoder('utf-8').decode(full);
+          }
+          chunks.push(result.value);
+          received += result.value.length;
+          setLoading(label, total? received/total : null, received, total);
+          return pump();
+        });
+      }
+      return pump();
+    });
+  }
+
+  function setLoading(label, pct, received, total){
+    var msg = document.getElementById('loadingMsg');
+    var fill = document.getElementById('loadingBarFill');
+    if(msg){
+      if(pct!=null){
+        msg.textContent = label+' — '+Math.round(pct*100)+'% ('+(received/1e6).toFixed(0)+'MB / '+(total/1e6).toFixed(0)+'MB)';
+      } else if(received!=null){
+        msg.textContent = label+' — '+(received/1e6).toFixed(0)+'MB';
+      } else {
+        msg.textContent = label+'…';
+      }
+    }
+    if(fill && pct!=null){ fill.style.width = Math.max(6,Math.round(pct*100))+'%'; }
+  }
+
+  function hideLoadingOverlay(){
+    var o = document.getElementById('loadingOverlay');
+    if(o) o.remove();
+  }
+
+  function showLoadError(err){
+    var o = document.getElementById('loadingOverlay');
+    if(!o) return;
+    o.classList.add('loading-error');
+    o.innerHTML = '<div class="loading-box">'+
+      '<div class="loading-title">Couldn\u2019t load race data</div>'+
+      '<div class="loading-sub">'+escapeHtml(err.message)+'</div>'+
+      '<div class="loading-sub">Check that <code>racing_fixtures.csv</code> and <code>racing_results.csv</code> sit in the same '+
+      'folder as this page in the repo, and that it\u2019s being served over http(s) — e.g. GitHub Pages — rather than opened '+
+      'directly as a local file.</div></div>';
+  }
+
+  function boot(){
+    setLoading('Loading fixtures', null);
+    fetchTextWithProgress(FIXTURES_URL, 'Loading fixtures').then(function(fixturesText){
+      var fx = parseFixtures(fixturesText);
+      RACES = fx.races;
+      setLoading('Loading results history (large file — first load can take a little while)', null);
+      return fetchTextWithProgress(RESULTS_URL, 'Loading results history').then(function(resultsText){
+        var rs = parseResults(resultsText, fx.fixtureHorseIds);
+        HORSES = rs.horses;
+        TRACKS = rs.tracks;
+        CLASSES = rs.classes;
+      });
+    }).then(function(){
+      hideLoadingOverlay();
+      init();
+    }).catch(function(err){
+      showLoadError(err);
+    });
+  }
+
+  boot();
+})();
+
+</script>
+</body>
+
+</html>
