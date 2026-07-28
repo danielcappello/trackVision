@@ -139,6 +139,28 @@ main.board{ padding:22px 30px 60px; }
   color:var(--paper-dim); border:1px solid var(--line); padding:4px 9px; border-radius:100px;
 }
 
+/* ---------- Top rated (race_ratings.csv) ---------- */
+.top-rated{ margin-bottom:18px; }
+.top-rated-row{ display:flex; gap:10px; flex-wrap:wrap; }
+.rated-card{
+  display:flex; align-items:center; gap:10px; flex:1 1 200px;
+  border:1px solid var(--line); border-radius:8px; padding:10px 14px; background:var(--ledger);
+}
+.rated-rank{
+  flex:none; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13px; color:#1a1d16;
+  background:var(--brass);
+}
+.rated-card.rank-2 .rated-rank{ background:#b9c2cc; }
+.rated-card.rank-3 .rated-rank{ background:#b8865a; }
+.rated-name{ flex:1; font-family:'Fraunces',serif; font-weight:600; font-size:14px; color:var(--paper); }
+.rated-score{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:15px; color:var(--brass); }
+.rated-scratched{
+  font-family:'IBM Plex Mono',monospace; font-size:9px; color:#e79088; border:1px solid #a8493f;
+  border-radius:100px; padding:1px 6px; vertical-align:middle; margin-left:4px;
+}
+.rated-card.scratched{ opacity:.5; }
+
 /* ---------- Entrant table ---------- */
 table.entrants{ width:100%; border-collapse:collapse; }
 table.entrants thead th{
@@ -434,11 +456,13 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   // ---------------------------------------------------------------
   var FIXTURES_URL = './racing_fixtures.csv';
   var RESULTS_URL  = './racing_results.csv';
+  var RATINGS_URL  = './race_ratings.csv';
 
   var TRACKS = [];
   var CLASSES = [];
   var RACES = [];           // array of race objects (upcoming fixtures)
   var HORSES = {};          // horseid -> array of run records
+  var RATINGS = {};         // raceid -> array of {horseid, name, score, entrantnumber, fieldsize, raceclass}
 
   // Run record indices:
   // 0 raceid, 1 dateDays, 2 trackIdx, 3 distance, 4 classIdx, 5 trialFlag(0/1),
@@ -692,6 +716,30 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   }
 
   // ---------- render selected race ----------
+  function renderTopRated(race, entrants){
+    var ratings = RATINGS[race.raceid];
+    if(!ratings || !ratings.length) return '';
+    var top3 = ratings.slice(0,3);
+    var entrantByHid = {};
+    entrants.forEach(function(e){ entrantByHid[e.horseid] = e; });
+
+    var html = '<div class="top-rated">';
+    html += '<div class="section-label" style="margin-top:0;">Top rated (by score)</div>';
+    html += '<div class="top-rated-row">';
+    top3.forEach(function(r, i){
+      var ent = entrantByHid[r.horseid];
+      var scratched = ent ? ent.scratched : false;
+      var displayName = ent ? ent.name : r.name;
+      html += '<div class="rated-card rank-'+(i+1)+(scratched?' scratched':'')+'">'+
+              '<div class="rated-rank">'+(i+1)+'</div>'+
+              '<div class="rated-name">'+escapeHtml(displayName)+(scratched?' <span class="rated-scratched">SCR</span>':'')+'</div>'+
+              '<div class="rated-score">'+r.score.toFixed(1)+'</div>'+
+              '</div>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
   function renderRace(race){
     var board = document.getElementById('board');
     var entrants = race.entrants.slice().sort(function(a,b){
@@ -709,6 +757,8 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += '<span class="pill">Sample: '+ sampleLabel() +'</span>';
     html += '<span class="pill">Distance range: '+ (state.distTol===0?'exact':'±'+state.distTol+'m') +'</span>';
     html += '</div></div>';
+
+    html += renderTopRated(race, entrants);
 
     html += '<table class="entrants"><thead><tr>'+
             '<th>Horse</th><th>Odds (win / place / lay)</th><th>Form (overall / track / trip / class / trials)</th><th>Class achievements</th>'+
@@ -1279,6 +1329,42 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     return {horses:runsByHorse, tracks:trackList, classes:classList};
   }
 
+  // race_ratings.csv: date, meetid, raceid, track, race, horseid, entrantnumber,
+  // horse, field_size, raceclass, score (higher score = better rated). The
+  // source file may already be trimmed to a handful of rows per race, but we
+  // sort and take the top 3 ourselves regardless, so it stays correct even if
+  // a future export includes the full field or arrives in a different order.
+  function parseRatings(text){
+    var byRace = {};
+    var colIdx = {};
+    var first = true;
+    forEachLine(text, function(line){
+      if(first){
+        first = false;
+        var header = parseCsvLine(line);
+        header.forEach(function(h,i){ colIdx[h]=i; });
+        return;
+      }
+      var row = parseCsvLine(line);
+      var rid = row[colIdx.raceid];
+      var score = toNum(row[colIdx.score]);
+      if(!rid || score==null) return;
+      var entry = {
+        horseid: row[colIdx.horseid],
+        name: row[colIdx.horse],
+        score: score,
+        entrantnumber: toInt(row[colIdx.entrantnumber]),
+        fieldsize: toInt(row[colIdx.field_size]),
+        raceclass: row[colIdx.raceclass]
+      };
+      (byRace[rid] || (byRace[rid]=[])).push(entry);
+    });
+    Object.keys(byRace).forEach(function(rid){
+      byRace[rid].sort(function(a,b){ return b.score - a.score; });
+    });
+    return byRace;
+  }
+
   // ---- fetch with progress, used for both CSV files ----
   function fetchTextWithProgress(url, label){
     return fetch(url).then(function(res){
@@ -1347,12 +1433,22 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     fetchTextWithProgress(FIXTURES_URL, 'Loading fixtures').then(function(fixturesText){
       var fx = parseFixtures(fixturesText);
       RACES = fx.races;
-      setLoading('Loading results history (large file — first load can take a little while)', null);
-      return fetchTextWithProgress(RESULTS_URL, 'Loading results history').then(function(resultsText){
-        var rs = parseResults(resultsText, fx.fixtureHorseIds);
-        HORSES = rs.horses;
-        TRACKS = rs.tracks;
-        CLASSES = rs.classes;
+      setLoading('Loading ratings', null);
+      return fetchTextWithProgress(RATINGS_URL, 'Loading ratings').then(function(ratingsText){
+        RATINGS = parseRatings(ratingsText);
+      }).catch(function(err){
+        // Ratings are a bonus feature — don't block the whole app if this
+        // file is missing or fails to load, just show no ratings.
+        console.warn('Could not load race_ratings.csv:', err);
+        RATINGS = {};
+      }).then(function(){
+        setLoading('Loading results history (large file — first load can take a little while)', null);
+        return fetchTextWithProgress(RESULTS_URL, 'Loading results history').then(function(resultsText){
+          var rs = parseResults(resultsText, fx.fixtureHorseIds);
+          HORSES = rs.horses;
+          TRACKS = rs.tracks;
+          CLASSES = rs.classes;
+        });
       });
     }).then(function(){
       hideLoadingOverlay();
