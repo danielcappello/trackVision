@@ -466,8 +466,8 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
 
   // Run record indices:
   // 0 raceid, 1 dateDays, 2 trackIdx, 3 distance, 4 classIdx, 5 trialFlag(0/1),
-  // 6 finish, 7 fieldsize, 8 margin, 9 sp, 10 trackcondition
-  var R_RID=0,R_DATE=1,R_TRACK=2,R_DIST=3,R_CLASS=4,R_TRIAL=5,R_FIN=6,R_FS=7,R_MGN=8,R_SP=9,R_COND=10;
+  // 6 finish, 7 fieldsize, 8 margin, 9 sp, 10 trackcondition, 11 winningtime (centiseconds)
+  var R_RID=0,R_DATE=1,R_TRACK=2,R_DIST=3,R_CLASS=4,R_TRIAL=5,R_FIN=6,R_FS=7,R_MGN=8,R_SP=9,R_COND=10,R_WT=11;
 
   // Race class hierarchy — lower rank number = higher grade.
   var CLASS_RANK = {
@@ -531,6 +531,63 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
   }
   function isWin(run){ return isValidFinish(run) && run[R_FIN]===1; }
   function isPlace(run){ return isValidFinish(run) && run[R_FIN]<=3; }
+
+  // ---- Race time estimation ----
+  // winningtime is stored in centiseconds for the WINNER of the race. A
+  // placed horse's own time is estimated as winner's time + its margin
+  // (lengths behind, cumulative to the winner) converted to seconds using a
+  // standard rule-of-thumb of ~0.2s per length. This is an approximation —
+  // actual sectional times vary by track and speed — so it's always labelled
+  // as an estimate in the UI when it isn't the horse's own recorded distance.
+  var SEC_PER_LENGTH = 0.2;
+
+  function horseOwnTimeSeconds(run){
+    if(run[R_WT]==null) return null;
+    var winnerSeconds = run[R_WT]/100;
+    if(isWin(run)) return winnerSeconds;
+    if(!isValidFinish(run)) return null;
+    if(run[R_MGN]==null) return null;
+    return winnerSeconds + run[R_MGN]*SEC_PER_LENGTH;
+  }
+
+  function fmtRaceTime(seconds){
+    if(seconds==null) return null;
+    var m = Math.floor(seconds/60);
+    var s = seconds - m*60;
+    return m+':'+(s<10?'0':'')+s.toFixed(2);
+  }
+
+  // Average time across `runs` (already filtered to a distance-tolerance
+  // window elsewhere), converted to a like-for-like estimate at
+  // targetDistance. Runs at the exact target distance use their real time;
+  // runs at a slightly different trip are scaled by that run's own pace
+  // (seconds/metre) — a simple linear inference, not a track/going model.
+  function avgTimeForDistance(runs, targetDistance){
+    var total = 0, n = 0, anyEstimate = false;
+    runs.forEach(function(r){
+      if(r[R_DIST]==null || r[R_DIST]<=0 || targetDistance==null) return;
+      var t = horseOwnTimeSeconds(r);
+      if(t==null) return;
+      var adjusted = t;
+      if(r[R_DIST] !== targetDistance){
+        adjusted = (t / r[R_DIST]) * targetDistance;
+        anyEstimate = true;
+      }
+      total += adjusted; n++;
+    });
+    if(n===0) return null;
+    return {seconds: total/n, count:n, estimate:anyEstimate};
+  }
+
+  function timeChip(avgTime){
+    var cls = 'stat-chip ' + (avgTime? '' : 'none');
+    var val = avgTime ? fmtRaceTime(avgTime.seconds) : '—';
+    var sub = avgTime ? (avgTime.count+' run'+(avgTime.count>1?'s':'')+(avgTime.estimate?' · est.':'')) : 'no data';
+    var title = avgTime && avgTime.estimate
+      ? 'Avg time, adjusted to this trip from nearby-distance runs (estimate)'
+      : 'Avg time';
+    return '<div class="'+cls+'" title="'+title+'"><div class="k">Avg Time</div><div class="v">'+val+'</div><div class="k">'+sub+'</div></div>';
+  }
 
   function applyStatWindow(runs){
     // runs already sorted desc by date
@@ -761,7 +818,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += renderTopRated(race, entrants);
 
     html += '<table class="entrants"><thead><tr>'+
-            '<th>Horse</th><th>Odds (win / place / lay)</th><th>Form (overall / track / trip / class / trials)</th><th>Class achievements</th>'+
+            '<th>Horse</th><th>Odds (win / place / lay)</th><th>Form (overall / track / trip / time / class / trials)</th><th>Class achievements</th>'+
             '</tr></thead><tbody>';
 
     entrants.forEach(function(ent){
@@ -785,6 +842,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         return Math.abs(r[R_DIST]-race.distance) <= state.distTol;
       }));
       var distSummary = computeSummary(distRuns);
+      var avgTime = avgTimeForDistance(distRuns, race.distance);
 
       var classRuns = applyStatWindow(competitiveRuns(hid).filter(function(r){ return className(r[R_CLASS])===race.raceclass; }));
       var classSummary = computeSummary(classRuns);
@@ -799,6 +857,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
               chip('Overall', overall)+
               chip('Track', trackSummary)+
               chip('Trip', distSummary)+
+              timeChip(avgTime)+
               chip('Class', classSummary)+
               (trialAtTrack.length? chip('Trials', trialSummary,'trial') : '<div class="stat-chip none"><div class="k">Trials</div><div class="v">—</div></div>')+
               '</div>';
@@ -812,7 +871,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
               '<div class="horse-name">'+escapeHtml(ent.name)+'</div>'+
               '<div class="horse-meta">Barrier '+(ent.barrier!=null?ent.barrier:'—')+' · '+escapeHtml(ent.jockey||'')+' · '+escapeHtml(ent.trainer||'')+'</div></td>'+
               '<td data-label="Odds (win / place / lay)">'+oddsChips(ent)+'</td>'+
-              '<td data-label="Form (overall / track / trip / class / trials)">'+formChips+'</td>'+
+              '<td data-label="Form (overall / track / trip / time / class / trials)">'+formChips+'</td>'+
               '<td data-label="Class achievements">'+achievementsHtml+'</td>'+
               '</tr>';
       html += '<tr class="detail-row"><td colspan="4"><div class="detail-panel" id="detail-'+hid+'"></div></td></tr>';
@@ -865,10 +924,12 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     var allComp = competitiveRuns(hid);
     var overallW = computeSummary(applyStatWindow(allComp));
     var trackW = computeSummary(applyStatWindow(allComp.filter(function(r){return trackName(r[R_TRACK])===race.track;})));
-    var distW = computeSummary(applyStatWindow(allComp.filter(function(r){
+    var distRunsDetail = applyStatWindow(allComp.filter(function(r){
       if(race.distance==null||r[R_DIST]==null) return false;
       return Math.abs(r[R_DIST]-race.distance)<=state.distTol;
-    })));
+    }));
+    var distW = computeSummary(distRunsDetail);
+    var avgTimeDetail = avgTimeForDistance(distRunsDetail, race.distance);
     var trialsAtTrack = trialRuns(hid).filter(function(r){return trackName(r[R_TRACK])===race.track;});
     var trialSummary = computeSummary(trialsAtTrack);
     var allTrials = trialRuns(hid);
@@ -882,6 +943,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     html += statCard('Overall record ('+sampleLabel()+')', overallW);
     html += statCard('At '+race.track, trackW);
     html += statCard('At this trip ('+(state.distTol===0?'exact':'±'+state.distTol+'m')+')', distW);
+    html += timeStatCard('Avg time at this trip', avgTimeDetail);
     html += statCard('In '+(race.raceclass||'this class'), classW);
     html += statCard('Trials/jumpouts at '+race.track, trialSummary, 'trial');
     html += statCard('All trials/jumpouts', allTrialsSummary, 'trial');
@@ -970,7 +1032,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     if(combined.length===0){
       html += '<div class="no-data">No recorded starts.</div>';
     } else {
-      html += '<table class="form"><thead><tr><th>Date</th><th>Track</th><th>Trip</th><th>Class</th><th>Type</th><th>Fin</th><th>Margin</th><th>SP</th></tr></thead><tbody>';
+      html += '<table class="form"><thead><tr><th>Date</th><th>Track</th><th>Trip</th><th>Class</th><th>Type</th><th>Fin</th><th>Time</th><th>Margin</th><th>SP</th></tr></thead><tbody>';
       combined.forEach(function(r){
         var trial = r[R_TRIAL]===1;
         var finBadge;
@@ -978,6 +1040,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         else if(r[R_FIN]===1){ finBadge = '<span class="finpos win">'+r[R_FIN]+'</span>'; }
         else if(r[R_FIN]<=3){ finBadge = '<span class="finpos place">'+r[R_FIN]+'</span>'; }
         else { finBadge = '<span class="finpos other">'+r[R_FIN]+'</span>'; }
+        var ownTime = horseOwnTimeSeconds(r);
         html += '<tr class="form-row'+(trial?' trial':'')+'">'+
                 '<td>'+fmtDate(r[R_DATE])+'</td>'+
                 '<td data-label="Track">'+escapeHtml(trackName(r[R_TRACK]))+'</td>'+
@@ -985,6 +1048,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
                 '<td data-label="Class">'+escapeHtml(className(r[R_CLASS]))+'</td>'+
                 '<td data-label="Type">'+(trial?'Trial/JO':'Race')+'</td>'+
                 '<td data-label="Fin">'+finBadge+ (r[R_FS]!=null? ' <span style="color:var(--paper-dim)">/'+r[R_FS]+'</span>':'') +'</td>'+
+                '<td data-label="Time">'+(ownTime!=null? fmtRaceTime(ownTime):'—')+'</td>'+
                 '<td data-label="Margin">'+(r[R_MGN]!=null? r[R_MGN]+'L':'—')+'</td>'+
                 '<td data-label="SP">'+(r[R_SP]!=null? '$'+r[R_SP].toFixed(2):'—')+'</td>'+
                 '</tr>';
@@ -1000,6 +1064,14 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     var big = summary.starts? (summary.wins+'-'+summary.places+'-'+summary.starts) : 'No runs';
     var small = summary.starts? (summary.winPct+'% win · '+summary.placePct+'% placed') : 'in this sample';
     return '<div class="'+cls+'"><div class="title">'+title+'</div><div class="figures"><div class="big">'+big+'</div></div><div class="small">'+small+'</div></div>';
+  }
+
+  function timeStatCard(title, avgTime){
+    var big = avgTime ? fmtRaceTime(avgTime.seconds) : 'No data';
+    var small = avgTime
+      ? (avgTime.count+' run'+(avgTime.count>1?'s':'')+(avgTime.estimate?' · adjusted for trip (estimate)':' · exact trip'))
+      : 'in this sample';
+    return '<div class="stat-card"><div class="title">'+title+'</div><div class="figures"><div class="big">'+big+'</div></div><div class="small">'+small+'</div></div>';
   }
 
   // ---------- search ----------
@@ -1311,7 +1383,8 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         toInt(row[colIdx.fieldsize]),
         toNum(row[colIdx.margin]),
         toNum(row[colIdx.sp]),
-        row[colIdx.trackcondition] || ''
+        row[colIdx.trackcondition] || '',
+        toInt(row[colIdx.winningtime])
       ];
       (runsByHorse[hid] || (runsByHorse[hid]=[])).push(rec);
     });
