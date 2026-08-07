@@ -636,48 +636,71 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     return d.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric', year:'numeric'});
   }
 
-  function meetingKey(race){ return race.date+'|'+race.track; }
+  // A "meeting" is date + track + race type, so a track running both a
+  // trial session and competitive races on the same day becomes two
+  // separate, homogeneous entries rather than one mixed one.
+  function meetingKey(race){ return race.date+'|'+race.track+'|'+(race.trialjumpout?'trial':'race'); }
 
-  // Group races by meeting (date+track). A meeting "counts" for the dropdown
-  // if it has at least one race matching the current trials toggle, so a
-  // trial-only meeting doesn't leave the dropdown pointing at an empty list.
   function meetingsMap(){
     var map = {};
     RACES.forEach(function(race){
       var key = meetingKey(race);
-      if(!map[key]) map[key] = {date:race.date, track:race.track, races:[]};
+      if(!map[key]) map[key] = {date:race.date, track:race.track, trial:race.trialjumpout, races:[]};
       map[key].races.push(race);
     });
     return map;
+  }
+
+  // Keys visible in the dropdown right now — competitive meetings always,
+  // trial/jumpout meetings only once the toggle is switched on.
+  function visibleMeetingKeys(map){
+    return Object.keys(map).filter(function(k){ return state.showTrials || !map[k].trial; });
   }
 
   // ---------- meeting dropdown (Track selector) ----------
   function buildMeetingSelector(){
     var sel = document.getElementById('meetingSelect');
     var map = meetingsMap();
-    var keys = Object.keys(map).sort(function(a,b){
+    var keys = visibleMeetingKeys(map).sort(function(a,b){
       var ma=map[a], mb=map[b];
       if(ma.date!==mb.date) return ma.date<mb.date?-1:1;
-      return ma.track<mb.track?-1:(ma.track>mb.track?1:0);
+      if(ma.track!==mb.track) return ma.track<mb.track?-1:(ma.track>mb.track?1:0);
+      return (ma.trial?1:0)-(mb.trial?1:0);
     });
 
     var dates = Array.from(new Set(keys.map(function(k){ return map[k].date; })));
     sel.innerHTML = '';
     dates.forEach(function(date){
-      var og = document.createElement('optgroup');
-      og.label = fmtDateStr(date);
-      keys.filter(function(k){ return map[k].date===date; }).forEach(function(k){
-        var m = map[k];
-        var allTrial = m.races.every(function(r){ return r.trialjumpout; });
-        var o = document.createElement('option');
-        o.value = k;
-        o.textContent = m.track + (allTrial? ' (Trials)':'');
-        og.appendChild(o);
-      });
-      sel.appendChild(og);
+      // Competitive meetings first, in their own group…
+      var raceKeys = keys.filter(function(k){ return map[k].date===date && !map[k].trial; });
+      if(raceKeys.length){
+        var og = document.createElement('optgroup');
+        og.label = fmtDateStr(date);
+        raceKeys.forEach(function(k){
+          var o = document.createElement('option');
+          o.value = k;
+          o.textContent = map[k].track;
+          og.appendChild(o);
+        });
+        sel.appendChild(og);
+      }
+      // …trial/jumpout meetings in their own clearly-labelled group, only
+      // present at all when the toggle has been switched on.
+      var trialKeys = keys.filter(function(k){ return map[k].date===date && map[k].trial; });
+      if(trialKeys.length){
+        var tog = document.createElement('optgroup');
+        tog.label = fmtDateStr(date) + ' — Trials / Jumpouts';
+        trialKeys.forEach(function(k){
+          var o = document.createElement('option');
+          o.value = k;
+          o.textContent = map[k].track + ' (Trials)';
+          tog.appendChild(o);
+        });
+        sel.appendChild(tog);
+      }
     });
 
-    if(!state.activeMeetingKey || !map[state.activeMeetingKey]){
+    if(!state.activeMeetingKey || keys.indexOf(state.activeMeetingKey)===-1){
       state.activeMeetingKey = keys.length? keys[0] : null;
     }
     if(state.activeMeetingKey) sel.value = state.activeMeetingKey;
@@ -693,13 +716,9 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
       el.innerHTML = '<div class="meeting-empty">No meetings available.</div>';
       return;
     }
-    var races = meeting.races.slice().sort(function(a,b){ return (a.race||0)-(b.race||0); });
-    var visible = races.filter(function(r){ return state.showTrials || !r.trialjumpout; });
-
-    if(!visible.length){
-      el.innerHTML = '<div class="meeting-empty">Only trial/jumpout races at this meeting — tick "Show trials/jumpouts" above to view them.</div>';
-      return;
-    }
+    // Each meeting group is already homogeneous (all trial or all
+    // competitive), so every race in it is valid to show as a tab.
+    var visible = meeting.races.slice().sort(function(a,b){ return (a.race||0)-(b.race||0); });
 
     // keep the active race if it's still visible; otherwise default to the first
     if(!visible.some(function(r){ return r.raceid===state.activeRaceId; })){
@@ -1114,9 +1133,15 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         div.className='search-hit';
         div.innerHTML = '<b>'+escapeHtml(m.name)+'</b> — '+escapeHtml(m.race.track)+' R'+m.race.race;
         div.addEventListener('click', function(){
+          if(m.race.trialjumpout && !state.showTrials){
+            state.showTrials = true;
+            var showTrialsBox = document.getElementById('showTrials');
+            if(showTrialsBox) showTrialsBox.checked = true;
+          }
           state.activeMeetingKey = meetingKey(m.race);
           state.activeRaceId = m.race.raceid;
           state.expanded = {}; state.expanded[m.horseid]=true;
+          buildMeetingSelector();
           document.getElementById('meetingSelect').value = state.activeMeetingKey;
           buildRaceTabs();
           setTimeout(function(){
@@ -1153,6 +1178,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     });
     document.getElementById('showTrials').addEventListener('change', function(e){
       state.showTrials = e.target.checked;
+      buildMeetingSelector();
       buildRaceTabs();
     });
     document.getElementById('searchInput').addEventListener('input', function(e){
