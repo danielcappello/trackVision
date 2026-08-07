@@ -1261,6 +1261,17 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
     return Math.round((dt-epoch)/86400000);
   }
   function toNum(x){ if(x==null||x==='') return null; var n=parseFloat(x); return isNaN(n)?null:n; }
+
+  // The trialjumpout flag in the source data isn't always set correctly for
+  // every row, so treat a race as a trial/jumpout if EITHER the flag says so
+  // OR its raceclass mentions "Trial" (covers "Trial", "Trial (CHUTE)", etc).
+  // This keeps trial races from leaking into the default competitive view
+  // under a plain track name just because the flag was wrong.
+  function isTrialRow(trialjumpoutStr, raceclassStr){
+    if(trialjumpoutStr === 'true') return true;
+    if(raceclassStr && raceclassStr.toLowerCase().indexOf('trial') !== -1) return true;
+    return false;
+  }
   function toInt(x){ var n=toNum(x); return n==null?null:Math.round(n); }
   function rnd2(x){ var n=toNum(x); return n==null?null:Math.round(n*100)/100; }
 
@@ -1304,7 +1315,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
           trackrating: row[FIX_COLS.trackrating],
           raceclass: row[FIX_COLS.raceclass],
           fieldsize: toInt(row[FIX_COLS.fieldsize]),
-          trialjumpout: row[FIX_COLS.trialjumpout]==='true',
+          trialjumpout: isTrialRow(row[FIX_COLS.trialjumpout], row[FIX_COLS.raceclass]),
           starttime: row[FIX_COLS.start_time],
           entrantsMap: {}
         };
@@ -1404,7 +1415,7 @@ tr.form-row.trial td{ color:var(--slate); font-style:italic; }
         ti,
         toInt(row[colIdx.distance]),
         ci,
-        row[colIdx.trialjumpout]==='true' ? 1 : 0,
+        isTrialRow(row[colIdx.trialjumpout], row[colIdx.raceclass]) ? 1 : 0,
         toInt(row[colIdx.finish]),
         toInt(row[colIdx.fieldsize]),
         toNum(row[colIdx.margin]),
