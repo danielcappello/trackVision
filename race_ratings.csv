@@ -1,14 +1,4 @@
-d,a,t,e
-m,e,e,t,i,d
-r,a,c,e,i,d
-t,r,a,c,k
-r,a,c,e
-h,o,r,s,e,i,d
-e,n,t,r,a,n,t,n,u,m,b,e,r
-h,o,r,s,e
-f,i,e,l,d,_,s,i,z,e
-r,a,c,e,c,l,a,s,s
-s,c,o,r,e
+date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,score
 2026-08-07,5197384,5475124,Ballarat Synthetic,1,5286539,3,Dustys Deel,8,Trial,
 2026-08-07,5197384,5475124,Ballarat Synthetic,1,5328865,6,Glidingdeel,8,Trial,
 2026-08-07,5197384,5475124,Ballarat Synthetic,1,5326558,2,Brutalrule,8,Trial,
