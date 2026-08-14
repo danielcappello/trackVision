@@ -80,9 +80,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-14,5195977,5466437,Geelong,8,5352589,3,Omnic,14,BM 58,102.34980833065079
 2026-08-14,5195977,5466437,Geelong,8,5322728,7,Queensbury,14,BM 58,78.78711157951996
 2026-08-14,5195977,5466437,Geelong,8,5343157,8,Deny Entry,14,BM 58,78.56669969374887
-2026-08-14,5194079,5464958,Gunnedah,1,5339933,8,Puffin,10,Maiden,92.34883066322857
-2026-08-14,5194079,5464958,Gunnedah,1,5362905,7,Miners Mate,10,Maiden,84.02317073170731
-2026-08-14,5194079,5464958,Gunnedah,1,5376435,1,Mongolian Master,10,Maiden,64.71190476190476
+2026-08-14,5194079,5464958,Gunnedah,1,5339933,8,Puffin,9,Maiden,92.73216399656191
+2026-08-14,5194079,5464958,Gunnedah,1,5362905,7,Miners Mate,9,Maiden,84.40650406504065
+2026-08-14,5194079,5464958,Gunnedah,1,5376435,1,Mongolian Master,9,Maiden,65.0952380952381
 2026-08-14,5197306,5475423,Gunnedah,1,5292048,7,Stoney Point,8,Trial,
 2026-08-14,5197306,5475423,Gunnedah,1,5357048,1,Carisbrooke Queen,8,Trial,
 2026-08-14,5197306,5475423,Gunnedah,1,5353004,5,Saddlers Ridge,8,Trial,
@@ -134,7 +134,7 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-14,5197338,5476868,Rockhampton,4,5374328,3,The House,5,Trial,
 2026-08-14,5197338,5476868,Rockhampton,4,5366120,1,Jonker Rocket,5,Trial,
 2026-08-14,5197338,5476868,Rockhampton,4,5342774,5,Hope To Heaven,5,Trial,
-2026-08-14,5197224,5475602,Royal Randwick,1,5371096,10,Travolta,9,Trial,
+2026-08-14,5197224,5475602,Royal Randwick,1,5371115,7,Sir Delius,9,Trial,
 2026-08-14,5197224,5475602,Royal Randwick,1,5334297,6,River Of Stars,9,Trial,
 2026-08-14,5197224,5475602,Royal Randwick,1,5335547,8,Soulcombe,9,Trial,
 2026-08-14,5197224,5476552,Royal Randwick,2,5364998,9,Tron Bolt,9,Trial,
