@@ -147,12 +147,12 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-21,5194101,5465124,Murwillumbah,8,5347386,5,Sir Don,12,BM 58,65.8409090909091
 2026-08-21,5194101,5465124,Murwillumbah,8,5335748,1,Super Luck Dragon,12,BM 58,65.7891621129326
 2026-08-21,5197226,5477378,Rosehill Gardens,1,5287009,2,Headwall,9,Trial,
-2026-08-21,5197226,5477378,Rosehill Gardens,1,5344392,1,Beadman,9,Trial,
+2026-08-21,5197226,5477378,Rosehill Gardens,1,5341281,7,Marhoona,9,Trial,
 2026-08-21,5197226,5477378,Rosehill Gardens,1,5344702,10,Skyhook,9,Trial,
+2026-08-21,5197226,5477374,Rosehill Gardens,2,5361773,6,Diameter,6,Trial,
 2026-08-21,5197226,5477374,Rosehill Gardens,2,5336421,2,Athabascan,6,Trial,
 2026-08-21,5197226,5477374,Rosehill Gardens,2,5316923,1,Asterix,6,Trial,
-2026-08-21,5197226,5477374,Rosehill Gardens,2,5370512,8,Portland,6,Trial,
-2026-08-21,5197226,5477375,Rosehill Gardens,3,5362917,8,Snitzel Dancer,8,Trial,
+2026-08-21,5197226,5477375,Rosehill Gardens,3,5369390,3,Demerzel,8,Trial,
 2026-08-21,5197226,5477375,Rosehill Gardens,3,5293464,4,Jamberoo,8,Trial,
 2026-08-21,5197226,5477375,Rosehill Gardens,3,5327680,6,Modella,8,Trial,
 2026-08-21,5197226,5477376,Rosehill Gardens,4,5341025,3,Enviable,9,Trial,
@@ -161,9 +161,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-21,5197226,5477377,Rosehill Gardens,5,5363322,6,Sing Your Song,9,Trial,
 2026-08-21,5197226,5477377,Rosehill Gardens,5,5372101,1,Caloocan Beauty,9,Trial,
 2026-08-21,5197226,5477377,Rosehill Gardens,5,5371632,7,Victor The Warrior,9,Trial,
-2026-08-21,5197226,5477379,Rosehill Gardens,6,5356789,9,Perfumist,10,Trial,
 2026-08-21,5197226,5477379,Rosehill Gardens,6,5342561,1,Agatha,10,Trial,
-2026-08-21,5197226,5477379,Rosehill Gardens,6,5360874,2,Azarax,10,Trial,
+2026-08-21,5197226,5477379,Rosehill Gardens,6,5340973,4,Clear Blue Day,10,Trial,
+2026-08-21,5197226,5477379,Rosehill Gardens,6,5356789,9,Perfumist,10,Trial,
 2026-08-21,5197226,5477380,Rosehill Gardens,7,5338944,9,Mal Coupe,9,Trial,
 2026-08-21,5197226,5477380,Rosehill Gardens,7,5304323,2,Art Volant,9,Trial,
 2026-08-21,5197226,5477380,Rosehill Gardens,7,5310278,3,Aura,9,Trial,
@@ -179,9 +179,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-21,5197226,5477387,Rosehill Gardens,11,5363155,7,Stormy Marco,10,Trial,
 2026-08-21,5197226,5477387,Rosehill Gardens,11,5363460,9,Tokyo Rose,10,Trial,
 2026-08-21,5197226,5477387,Rosehill Gardens,11,5364836,4,King Creole,10,Trial,
-2026-08-21,5197226,5476836,Rosehill Gardens,12,5360265,2,Baqueira,10,Trial,
-2026-08-21,5197226,5476836,Rosehill Gardens,12,5341183,5,Federalist,10,Trial,
+2026-08-21,5197226,5476836,Rosehill Gardens,12,5345616,9,Star Half,10,Trial,
 2026-08-21,5197226,5476836,Rosehill Gardens,12,5372478,6,Macaroon,10,Trial,
+2026-08-21,5197226,5476836,Rosehill Gardens,12,5343166,1,Alphabet,10,Trial,
 2026-08-21,5195875,5466443,Sale,1,5343073,8,Wolves Den,13,Maiden,81.21794966551064
 2026-08-21,5195875,5466443,Sale,1,5329617,6,Velvet City,13,Maiden,74.38627129124511
 2026-08-21,5195875,5466443,Sale,1,5383826,14,Lady Puissance,13,Maiden,66.28362247508589
