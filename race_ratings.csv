@@ -1,6 +1,6 @@
 date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,score
-2026-08-24,5196018,5477339,Hawkesbury,1,5347942,3,Eliyass,5,Trial,
-2026-08-24,5196018,5477339,Hawkesbury,1,5341560,5,Touching Hans,5,Trial,
+2026-08-24,5196018,5477339,Hawkesbury,1,5344632,6,Valiant Dreamer,5,Trial,
+2026-08-24,5196018,5477339,Hawkesbury,1,5341897,4,Harrythewiz,5,Trial,
 2026-08-24,5196018,5477339,Hawkesbury,1,5345406,1,All Star,5,Trial,
 2026-08-24,5196018,5477598,Hawkesbury,2,5341987,1,Blitzgal,6,Trial,
 2026-08-24,5196018,5477598,Hawkesbury,2,5344281,7,Scenic Point,6,Trial,
@@ -14,9 +14,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-24,5196018,5477602,Hawkesbury,5,5361418,5,Lord Wootton,6,Trial,
 2026-08-24,5196018,5477602,Hawkesbury,5,5360413,6,Tightrope Walker,6,Trial,
 2026-08-24,5196018,5477602,Hawkesbury,5,5349478,7,Winter Garden,6,Trial,
+2026-08-24,5196018,5477343,Hawkesbury,6,5350086,2,Fitzclarence,6,Trial,
 2026-08-24,5196018,5477343,Hawkesbury,6,5309839,7,Bold And Blazen,6,Trial,
 2026-08-24,5196018,5477343,Hawkesbury,6,5322928,3,Magic Forest,6,Trial,
-2026-08-24,5196018,5477343,Hawkesbury,6,5339417,5,Too Darn Lovely,6,Trial,
 2026-08-24,5196018,5477344,Hawkesbury,7,5373372,3,Dharug,7,Trial,
 2026-08-24,5196018,5477344,Hawkesbury,7,5362548,6,Train To Kyoto,7,Trial,
 2026-08-24,5196018,5477344,Hawkesbury,7,5363926,1,Boitard,7,Trial,
@@ -161,9 +161,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-24,5194103,5465528,Tuncurry,5,5348921,8,Dirty Does It,10,BM 58,86.1495207394541
 2026-08-24,5194103,5465528,Tuncurry,5,5354676,11,Cheating Lilibet,10,BM 58,67.52941712204007
 2026-08-24,5194103,5465528,Tuncurry,5,5350634,1,Issys Star,10,BM 58,64.74269659950288
-2026-08-24,5194103,5465526,Tuncurry,6,5302111,1,Damascus Gate,10,BM 58,100.74327557259494
-2026-08-24,5194103,5465526,Tuncurry,6,5328720,9,Purple Kitty,10,BM 58,82.85618145603513
-2026-08-24,5194103,5465526,Tuncurry,6,5333763,5,Explosive Tycoon,10,BM 58,82.39205600576376
+2026-08-24,5194103,5465526,Tuncurry,6,5302111,1,Damascus Gate,9,BM 58,101.64327557259494
+2026-08-24,5194103,5465526,Tuncurry,6,5328720,9,Purple Kitty,9,BM 58,83.75618145603514
+2026-08-24,5194103,5465526,Tuncurry,6,5333763,5,Explosive Tycoon,9,BM 58,83.29205600576377
 2026-08-24,5194103,5465525,Tuncurry,7,5327034,5,Hibiki Harmony,10,Open,74.85434826199328
 2026-08-24,5194103,5465525,Tuncurry,7,5254020,1,Danish Fortune,10,Open,54.337896770246154
 2026-08-24,5194103,5465525,Tuncurry,7,5306554,3,House Of Cards,10,Open,43.985283157796246
