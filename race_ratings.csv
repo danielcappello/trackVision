@@ -2,9 +2,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-27,5197247,5477669,Aquis Beaudesert,1,5328147,1,Deemee,5,Trial,
 2026-08-27,5197247,5477669,Aquis Beaudesert,1,5303710,4,Maurita,5,Trial,
 2026-08-27,5197247,5477669,Aquis Beaudesert,1,5371442,5,Zweig,5,Trial,
-2026-08-27,5197247,5477670,Aquis Beaudesert,2,5345472,1,Flop Shot,5,Trial,
+2026-08-27,5197247,5477670,Aquis Beaudesert,2,5355520,3,Come On Mr Snips,5,Trial,
 2026-08-27,5197247,5477670,Aquis Beaudesert,2,5308714,2,Down Under Stunnah,5,Trial,
-2026-08-27,5197247,5477670,Aquis Beaudesert,2,5348466,5,Triple Malt,5,Trial,
+2026-08-27,5197247,5477670,Aquis Beaudesert,2,5345472,1,Flop Shot,5,Trial,
 2026-08-27,5197247,5478077,Aquis Beaudesert,3,5307203,2,Cosmic Beauty,6,Trial,
 2026-08-27,5197247,5478077,Aquis Beaudesert,3,5288993,3,Absolute Sunshine,6,Trial,
 2026-08-27,5197247,5478077,Aquis Beaudesert,3,5348036,5,Vintage Vibes,6,Trial,
@@ -17,7 +17,7 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-27,5197247,5478103,Aquis Beaudesert,6,5363824,4,Monicas Secret,6,Trial,
 2026-08-27,5197247,5478103,Aquis Beaudesert,6,5375441,5,Oreshnik,6,Trial,
 2026-08-27,5197247,5478103,Aquis Beaudesert,6,5372390,7,Pac Fair,6,Trial,
-2026-08-27,5197247,5472321,Aquis Beaudesert,7,5322906,7,Silent Call,7,Trial,
+2026-08-27,5197247,5472321,Aquis Beaudesert,7,5348438,3,Mashean,7,Trial,
 2026-08-27,5197247,5472321,Aquis Beaudesert,7,5356357,6,Celebrity Torque,7,Trial,
 2026-08-27,5197247,5472321,Aquis Beaudesert,7,5311350,2,Jidayubori,7,Trial,
 2026-08-27,5197247,5478104,Aquis Beaudesert,8,5360280,5,Dark Martian,7,Trial,
@@ -86,15 +86,15 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-27,5194666,5467528,Ipswich,1,5331444,1,Thinking Gold,9,BM 64,80.88895259111823
 2026-08-27,5194666,5467528,Ipswich,1,5356163,4,Empire Of Art,9,BM 64,72.60013990451877
 2026-08-27,5194666,5467528,Ipswich,1,5343336,3,Empress Aspen,9,BM 64,68.91397314410166
-2026-08-27,5197184,5477894,Ipswich,1,5348188,4,Worthy Stunnah,5,Trial,
 2026-08-27,5197184,5477894,Ipswich,1,5369614,3,Encrypted Charm,5,Trial,
 2026-08-27,5197184,5477894,Ipswich,1,5269809,2,Ready Mister Music,5,Trial,
+2026-08-27,5197184,5477894,Ipswich,1,5330714,1,Jungle Prince,5,Trial,
 2026-08-27,5194666,5467530,Ipswich,2,5349859,3,Yoweri,10,BM 64,83.31787869554013
 2026-08-27,5194666,5467530,Ipswich,2,5318250,1,Medals,10,BM 64,82.29439608637102
 2026-08-27,5194666,5467530,Ipswich,2,5295269,5,Runaround Sue,10,BM 64,79.31034428050135
 2026-08-27,5197184,5477895,Ipswich,2,5337246,4,Mishani Reactor,4,Trial,
 2026-08-27,5197184,5477895,Ipswich,2,5369621,2,Legacy Cipher,4,Trial,
-2026-08-27,5197184,5477895,Ipswich,2,5251139,1,Vivenzo,4,Trial,
+2026-08-27,5197184,5477895,Ipswich,2,5327297,3,Sugar Island,4,Trial,
 2026-08-27,5194666,5477585,Ipswich,3,5346641,1,Essessbee,9,Maiden,113.77777777777777
 2026-08-27,5194666,5477585,Ipswich,3,5359216,2,I Am Louie,9,Maiden,93.56855439642325
 2026-08-27,5194666,5477585,Ipswich,3,5347796,6,Kaida Odori,9,Maiden,82.29744916330282
