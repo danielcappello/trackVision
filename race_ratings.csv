@@ -5,12 +5,12 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-28,5194667,5467540,Aquis Park Gold Coast,2,5346584,2,Magic Invader,10,Maiden,76.54647446794044
 2026-08-28,5194667,5467540,Aquis Park Gold Coast,2,5347532,3,Pieratas Spirit,10,Maiden,71.0
 2026-08-28,5194667,5467540,Aquis Park Gold Coast,2,5343638,1,Drinkwater,10,Maiden,69.59644908825237
-2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5369708,7,Brave Etoile,14,Maiden,139.38888888888889
-2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5363119,8,Sweet Rebellion,14,Maiden,113.64550264550265
-2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5363645,2,Boom Chika Wow,14,Maiden,97.57142857142857
-2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5304385,3,Deep Respect,9,Open,45.198713788194986
-2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5309901,8,Lady Shotgun,9,Open,33.417631815537575
-2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5289159,7,Count Nicholas,9,Open,28.722091075751308
+2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5369708,7,Brave Etoile,13,Maiden,139.12515262515262
+2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5363119,8,Sweet Rebellion,13,Maiden,113.38176638176638
+2026-08-28,5194667,5467542,Aquis Park Gold Coast,3,5363645,2,Boom Chika Wow,13,Maiden,97.3076923076923
+2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5304385,3,Deep Respect,8,Open,45.86538045486166
+2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5309901,8,Lady Shotgun,8,Open,34.08429848220424
+2026-08-28,5194667,5467535,Aquis Park Gold Coast,4,5289159,7,Count Nicholas,8,Open,29.388757742417972
 2026-08-28,5194667,5467536,Aquis Park Gold Coast,5,5284870,4,Old Song,11,BM 70,67.75174359176687
 2026-08-28,5194667,5467536,Aquis Park Gold Coast,5,5288391,10,Flash Prince,11,BM 70,53.46468801704404
 2026-08-28,5194667,5467536,Aquis Park Gold Coast,5,5326756,7,Brain Wave,11,BM 70,45.257390660532025
@@ -218,18 +218,18 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-28,5197227,5478000,Royal Randwick,6,5361768,4,Portico,9,Trial,
 2026-08-28,5197227,5478000,Royal Randwick,6,5303607,9,Verbil,9,Trial,
 2026-08-28,5197227,5478000,Royal Randwick,6,5327891,7,Vetwelve,9,Trial,
-2026-08-28,5197227,5477992,Royal Randwick,7,5367150,5,Pacifico,9,Trial,
+2026-08-28,5197227,5477992,Royal Randwick,7,5360122,6,Rocks Or Diamonds,9,Trial,
 2026-08-28,5197227,5477992,Royal Randwick,7,5339830,8,Triple Two Eight,9,Trial,
 2026-08-28,5197227,5477992,Royal Randwick,7,5359873,2,Indomitus,9,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5339305,3,Markos Port,7,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5375617,6,Stitzer,7,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5365622,2,Low Key,7,Trial,
+2026-08-28,5197227,5477991,Royal Randwick,12,5321157,3,Metallic Cat,9,Trial,
 2026-08-28,5197227,5477991,Royal Randwick,12,5324132,8,Verona Rose,9,Trial,
-2026-08-28,5197227,5477991,Royal Randwick,12,5326509,6,Outta Line,9,Trial,
-2026-08-28,5197227,5477991,Royal Randwick,12,5328897,9,Oui Oui Oui,9,Trial,
+2026-08-28,5197227,5477991,Royal Randwick,12,5357713,2,Firestorm,9,Trial,
+2026-08-28,5197227,5477577,Royal Randwick,13,5362646,1,Bewley Castle,9,Trial,
 2026-08-28,5197227,5477577,Royal Randwick,13,5362969,6,Our Emperor,9,Trial,
 2026-08-28,5197227,5477577,Royal Randwick,13,5363314,9,Inner Vow,9,Trial,
-2026-08-28,5197227,5477577,Royal Randwick,13,5364136,2,Crescent King,9,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5330593,7,Lucsain,10,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5322565,1,Aliento,10,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5344000,3,Boby Revolution,10,Trial,
