@@ -44,9 +44,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-28,5194691,5467102,Cannon Park,7,5289814,2,Demon Award,14,Quality,109.11634860195069
 2026-08-28,5194691,5467102,Cannon Park,7,5053042,1,Speed Legend,14,Quality,85.5888230878008
 2026-08-28,5194691,5467102,Cannon Park,7,5313535,5,Tambos Justice,14,Quality,81.63332103931819
-2026-08-28,5194691,5467106,Cannon Park,8,5344558,4,Secret Cypher,10,BM 0-57,74.19946377820142
-2026-08-28,5194691,5467106,Cannon Park,8,5341896,10,Shown The Door,10,BM 0-57,71.52799370283088
-2026-08-28,5194691,5467106,Cannon Park,8,5324005,1,Lazenby,10,BM 0-57,71.31748856410923
+2026-08-28,5194691,5467106,Cannon Park,8,5344558,4,Secret Cypher,9,BM 0-57,74.51613044486808
+2026-08-28,5194691,5467106,Cannon Park,8,5341896,10,Shown The Door,9,BM 0-57,71.84466036949756
+2026-08-28,5194691,5467106,Cannon Park,8,5324005,1,Lazenby,9,BM 0-57,71.63415523077589
 2026-08-28,5197408,5478079,Flemington,1,5283250,4,Here To Shock,6,Trial,
 2026-08-28,5197408,5478079,Flemington,1,5375101,3,Hutchence,6,Trial,
 2026-08-28,5197408,5478079,Flemington,1,5369864,2,Grinzinger Heart,6,Trial,
@@ -215,18 +215,18 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-08-28,5197227,5478000,Royal Randwick,6,5375836,5,Quietness,9,Trial,
 2026-08-28,5197227,5478000,Royal Randwick,6,5303607,9,Verbil,9,Trial,
 2026-08-28,5197227,5478000,Royal Randwick,6,5327891,7,Vetwelve,9,Trial,
-2026-08-28,5197227,5477992,Royal Randwick,7,5361239,9,Fiaba,8,Trial,
+2026-08-28,5197227,5477992,Royal Randwick,7,5372980,7,Tagaloa Storm,8,Trial,
 2026-08-28,5197227,5477992,Royal Randwick,7,5359873,2,Indomitus,8,Trial,
 2026-08-28,5197227,5477992,Royal Randwick,7,5360039,1,Call Me Coach,8,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5339305,3,Markos Port,6,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5365622,2,Low Key,6,Trial,
 2026-08-28,5197227,5477994,Royal Randwick,9,5361169,7,Testament,6,Trial,
-2026-08-28,5197227,5477991,Royal Randwick,12,5321157,3,Metallic Cat,9,Trial,
-2026-08-28,5197227,5477991,Royal Randwick,12,5324132,8,Verona Rose,9,Trial,
-2026-08-28,5197227,5477991,Royal Randwick,12,5324192,7,Superfabulistic,9,Trial,
-2026-08-28,5197227,5477577,Royal Randwick,13,5372806,8,Power Prophet,9,Trial,
-2026-08-28,5197227,5477577,Royal Randwick,13,5360612,3,Dignifying,9,Trial,
-2026-08-28,5197227,5477577,Royal Randwick,13,5362646,1,Bewley Castle,9,Trial,
+2026-08-28,5197227,5477991,Royal Randwick,12,5357713,2,Firestorm,9,Trial,
+2026-08-28,5197227,5477991,Royal Randwick,12,5348627,4,Miles Of Glory,9,Trial,
+2026-08-28,5197227,5477991,Royal Randwick,12,5343163,1,Farnicle,9,Trial,
+2026-08-28,5197227,5477577,Royal Randwick,13,5363314,9,Inner Vow,9,Trial,
+2026-08-28,5197227,5477577,Royal Randwick,13,5364136,2,Crescent King,9,Trial,
+2026-08-28,5197227,5477577,Royal Randwick,13,5365139,4,Found The Gold,9,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5322565,1,Aliento,8,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5330593,7,Lucsain,8,Trial,
 2026-08-28,5197227,5478001,Royal Randwick,14,5346602,9,Phlox,8,Trial,
