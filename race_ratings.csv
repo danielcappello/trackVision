@@ -2,24 +2,24 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-02,5197844,5478197,Ballarat Synthetic,1,5333803,5,Weather Delay,6,Trial,
 2026-09-02,5197844,5478197,Ballarat Synthetic,1,5345842,1,Aurelio,6,Trial,
 2026-09-02,5197844,5478197,Ballarat Synthetic,1,5345929,2,Bushell,6,Trial,
-2026-09-02,5197844,5478198,Ballarat Synthetic,2,5330683,1,Attachments,7,Trial,
+2026-09-02,5197844,5478198,Ballarat Synthetic,2,5322362,3,Earl Of Gloucester,7,Trial,
 2026-09-02,5197844,5478198,Ballarat Synthetic,2,5373725,7,Assisi,7,Trial,
 2026-09-02,5197844,5478198,Ballarat Synthetic,2,5344353,7,Zorb,7,Trial,
-2026-09-02,5197844,5478199,Ballarat Synthetic,3,5367112,9,Notified,7,Trial,
-2026-09-02,5197844,5478199,Ballarat Synthetic,3,5366005,8,Shamus Award/No Restriction/2023,7,Trial,
 2026-09-02,5197844,5478199,Ballarat Synthetic,3,5359529,4,Irish Choice,7,Trial,
-2026-09-02,5197844,5478201,Ballarat Synthetic,4,5357694,4,Maynard,9,Trial,
-2026-09-02,5197844,5478201,Ballarat Synthetic,4,5343828,10,Russian Choice,9,Trial,
-2026-09-02,5197844,5478201,Ballarat Synthetic,4,5337191,6,Naraghi,9,Trial,
-2026-09-02,5197844,5478202,Ballarat Synthetic,5,5356910,2,Chasing Atlantis,4,Trial,
-2026-09-02,5197844,5478202,Ballarat Synthetic,5,5344531,4,Just Ninja,4,Trial,
+2026-09-02,5197844,5478199,Ballarat Synthetic,3,5350029,6,Sweet But Sassy,7,Trial,
+2026-09-02,5197844,5478199,Ballarat Synthetic,3,5367112,9,Notified,7,Trial,
+2026-09-02,5197844,5478201,Ballarat Synthetic,4,5330706,9,Titanic,9,Trial,
+2026-09-02,5197844,5478201,Ballarat Synthetic,4,5354372,7,Singapore Splash,9,Trial,
+2026-09-02,5197844,5478201,Ballarat Synthetic,4,5328486,1,Battle Point,9,Trial,
 2026-09-02,5197844,5478202,Ballarat Synthetic,5,5347113,5,Hellbent/Camporella/2022,4,Trial,
+2026-09-02,5197844,5478202,Ballarat Synthetic,5,5344531,4,Just Ninja,4,Trial,
+2026-09-02,5197844,5478202,Ballarat Synthetic,5,5344542,7,Milos Filos,4,Trial,
+2026-09-02,5197844,5478382,Ballarat Synthetic,6,5369610,3,Royal Meeting (Ire)/Occultation/2023,8,Trial,
 2026-09-02,5197844,5478382,Ballarat Synthetic,6,5368334,5,Fierce Impact (Jpn)/Densy (Ger)/2023,8,Trial,
 2026-09-02,5197844,5478382,Ballarat Synthetic,6,5364795,6,Dirty Work/Turf Times/2023,8,Trial,
-2026-09-02,5197844,5478382,Ballarat Synthetic,6,5360350,10,Caddington,8,Trial,
 2026-09-02,5197844,5478383,Ballarat Synthetic,7,5349413,8,Divine Vixen,7,Trial,
+2026-09-02,5197844,5478383,Ballarat Synthetic,7,5361485,1,Gold Bijoux,7,Trial,
 2026-09-02,5197844,5478383,Ballarat Synthetic,7,5387421,2,Noir Velocity,7,Trial,
-2026-09-02,5197844,5478383,Ballarat Synthetic,7,5372016,7,We Know Best,7,Trial,
 2026-09-02,5196043,5465905,Belmont,1,5328885,1,Hez Got The Safe,5,BM 58,83.47056730355159
 2026-09-02,5196043,5465905,Belmont,1,5349842,5,Joyoh,5,BM 58,57.8646993495161
 2026-09-02,5196043,5465905,Belmont,1,5355645,4,Guarantor,5,BM 58,52.64150356492099
@@ -41,18 +41,18 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-02,5196043,5465907,Belmont,7,5312981,1,Centre Bond,11,BM 70,83.1904687411589
 2026-09-02,5196043,5465907,Belmont,7,5309466,3,Razmas,11,BM 70,77.57794038422311
 2026-09-02,5196043,5465907,Belmont,7,5326802,9,Classic Ruler,11,BM 70,73.87875903249535
-2026-09-02,5197842,5478416,Caulfield Heath,1,5325031,0,Onesmoothoperator,7,Trial,
-2026-09-02,5197842,5478416,Caulfield Heath,1,5385615,0,Top Rich,7,Trial,
 2026-09-02,5197842,5478416,Caulfield Heath,1,5373760,0,Verry Zeductive,7,Trial,
-2026-09-02,5197842,5478417,Caulfield Heath,2,5341416,0,Cabriole,11,Trial,
-2026-09-02,5197842,5478417,Caulfield Heath,2,5300653,0,Von Hauke,11,Trial,
-2026-09-02,5197842,5478417,Caulfield Heath,2,5313302,0,Chocolate Royal,11,Trial,
-2026-09-02,5197842,5478418,Caulfield Heath,3,5391292,0,However,9,Trial,
-2026-09-02,5197842,5478418,Caulfield Heath,3,5386155,0,Bordeaux Valley,9,Trial,
+2026-09-02,5197842,5478416,Caulfield Heath,1,5350569,0,Shes A Hustler,7,Trial,
+2026-09-02,5197842,5478416,Caulfield Heath,1,5385615,0,Top Rich,7,Trial,
+2026-09-02,5197842,5478417,Caulfield Heath,2,5327823,0,Wonder Boy,11,Trial,
+2026-09-02,5197842,5478417,Caulfield Heath,2,5375665,0,Lims Saltoro,11,Trial,
+2026-09-02,5197842,5478417,Caulfield Heath,2,5362425,0,Fast Freddie,11,Trial,
+2026-09-02,5197842,5478418,Caulfield Heath,3,5368333,0,Extreme Turbo,9,Trial,
 2026-09-02,5197842,5478418,Caulfield Heath,3,5375212,0,Written By/Lucindas Moon (Usa)/2023,9,Trial,
-2026-09-02,5197842,5478419,Caulfield Heath,4,5374901,0,Moraza,10,Trial,
-2026-09-02,5197842,5478419,Caulfield Heath,4,5360042,0,Aryaam,10,Trial,
-2026-09-02,5197842,5478419,Caulfield Heath,4,5368094,0,Gozaimasu,10,Trial,
+2026-09-02,5197842,5478418,Caulfield Heath,3,5386155,0,Bordeaux Valley,9,Trial,
+2026-09-02,5197842,5478419,Caulfield Heath,4,5361740,0,Boutin,10,Trial,
+2026-09-02,5197842,5478419,Caulfield Heath,4,5365764,0,Endless Parade,10,Trial,
+2026-09-02,5197842,5478419,Caulfield Heath,4,5365330,0,Ideal Water,10,Trial,
 2026-09-02,5197842,5478420,Caulfield Heath,5,5357975,0,Coronation Turbo,10,Trial,
 2026-09-02,5197842,5478420,Caulfield Heath,5,5340999,0,Tecknoking,10,Trial,
 2026-09-02,5197842,5478420,Caulfield Heath,5,5341957,0,Certainly Quiet,10,Trial,
@@ -65,11 +65,11 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-02,5197842,5478423,Caulfield Heath,8,5346870,0,Imperial Award,9,Trial,
 2026-09-02,5197842,5478423,Caulfield Heath,8,5401539,0,Turn Me Loose (Nz)/Perfect Beat/2023,9,Trial,
 2026-09-02,5197842,5478423,Caulfield Heath,8,5394564,0,Maid O War,9,Trial,
+2026-09-02,5197842,5478424,Caulfield Heath,9,5358699,0,Japanese Moka,9,Trial,
 2026-09-02,5197842,5478424,Caulfield Heath,9,5360349,0,Featherbrook,9,Trial,
-2026-09-02,5197842,5478424,Caulfield Heath,9,5361690,0,Handee,9,Trial,
-2026-09-02,5197842,5478424,Caulfield Heath,9,5364918,0,Chocolate Freckles,9,Trial,
+2026-09-02,5197842,5478424,Caulfield Heath,9,5372377,0,Exclusive Punt,9,Trial,
 2026-09-02,5197842,5478425,Caulfield Heath,10,5334513,0,Salarae,10,Trial,
-2026-09-02,5197842,5478425,Caulfield Heath,10,5346801,0,Weasel Sea,10,Trial,
+2026-09-02,5197842,5478425,Caulfield Heath,10,5351393,0,Glen Shiel,10,Trial,
 2026-09-02,5197842,5478425,Caulfield Heath,10,5371823,0,Pierata/Blackboots/2023,10,Trial,
 2026-09-02,5197273,5472762,Devonport Tapeta Synthetic,1,5337456,1,Azonto,6,BM 64,89.95876882671058
 2026-09-02,5197273,5472762,Devonport Tapeta Synthetic,1,5290056,6,Mateus,6,BM 64,60.4072386239734
@@ -137,9 +137,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-02,5196954,5475006,Murray Bridge,5,5309427,1,Play Bouzouki,13,BM 58,79.6555314430136
 2026-09-02,5196954,5475006,Murray Bridge,5,5312977,13,Win To Retire,13,BM 58,75.14774054017272
 2026-09-02,5196954,5475006,Murray Bridge,5,5349844,5,Goodlookin Guru,13,BM 58,72.28535251833681
-2026-09-02,5196954,5478351,Murray Bridge,6,5345520,3,Durham,11,BM 0-57,87.54783058709761
-2026-09-02,5196954,5478351,Murray Bridge,6,5334090,9,Belle From Hell,11,BM 0-57,81.42215732863043
-2026-09-02,5196954,5478351,Murray Bridge,6,5282191,6,Chartin,11,BM 0-57,66.5094172842864
+2026-09-02,5196954,5478351,Murray Bridge,6,5345520,3,Durham,10,BM 0-57,87.04328513255214
+2026-09-02,5196954,5478351,Murray Bridge,6,5282191,6,Chartin,10,BM 0-57,66.00487182974094
+2026-09-02,5196954,5478351,Murray Bridge,6,5274330,1,Bit Of A Rebel,10,BM 0-57,64.34683530283245
 2026-09-02,5196954,5478352,Murray Bridge,7,5359384,5,Yorokobi,12,BM 0-57,90.8782063370122
 2026-09-02,5196954,5478352,Murray Bridge,7,5302867,3,Tottori,12,BM 0-57,83.53055331547716
 2026-09-02,5196954,5478352,Murray Bridge,7,5289013,8,Taupo Tiger,12,BM 0-57,76.34179925658984
