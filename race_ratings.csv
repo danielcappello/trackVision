@@ -97,10 +97,10 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-17,5195843,5469715,Mornington,8,5391003,5,Mr Sioux,15,BM 58,75.98518518518519
 2026-09-17,5197860,5481474,Penshurst,1,5326702,0,Du Clisson,5,Trial,
 2026-09-17,5197860,5481474,Penshurst,1,5291523,0,Prince Sonic,5,Trial,
-2026-09-17,5197860,5481474,Penshurst,1,5340478,0,Melbourne Magic,5,Trial,
-2026-09-17,5197860,5481475,Penshurst,2,5359434,0,Bush Deep,5,Trial,
+2026-09-17,5197860,5481474,Penshurst,1,5322670,0,Flying Embers,5,Trial,
 2026-09-17,5197860,5481475,Penshurst,2,5338239,0,Icy Pole,5,Trial,
 2026-09-17,5197860,5481475,Penshurst,2,5345565,0,Positive Image,5,Trial,
+2026-09-17,5197860,5481475,Penshurst,2,5348738,0,Symphony Sista,5,Trial,
 2026-09-17,5197860,5481476,Penshurst,3,5350190,0,Native Dance,5,Trial,
 2026-09-17,5197860,5481476,Penshurst,3,5354848,0,All The Way Baby,5,Trial,
 2026-09-17,5197860,5481476,Penshurst,3,5359373,0,Almorina,5,Trial,
@@ -110,8 +110,8 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-17,5197860,5481478,Penshurst,5,5339340,0,Blues Jazz,4,Trial,
 2026-09-17,5197860,5481478,Penshurst,5,5344263,0,Got The Rizz,4,Trial,
 2026-09-17,5197860,5481478,Penshurst,5,5356086,0,Niccotein,4,Trial,
-2026-09-17,5197860,5481479,Penshurst,6,5332920,0,Unseen Ruler,5,Trial,
 2026-09-17,5197860,5481479,Penshurst,6,5327551,0,Rebel Storm,5,Trial,
+2026-09-17,5197860,5481479,Penshurst,6,5332920,0,Unseen Ruler,5,Trial,
 2026-09-17,5197860,5481479,Penshurst,6,5345175,0,Singles Moment,5,Trial,
 2026-09-17,5197860,5481480,Penshurst,7,5331645,0,Milady,5,Trial,
 2026-09-17,5197860,5481480,Penshurst,7,5349339,0,Celestial Splendor,5,Trial,
@@ -119,9 +119,3 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-17,5197860,5481481,Penshurst,8,5342666,0,Mr Cicconi,5,Trial,
 2026-09-17,5197860,5481481,Penshurst,8,5352365,0,Paramount War,5,Trial,
 2026-09-17,5197860,5481481,Penshurst,8,5362178,0,Endless Fury,5,Trial,
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-7,,7,HK-1653922486,1,Love Together,12,,13.0
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-7,,7,HK-1026689626,3,Horsepower,12,,11.5
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-7,,7,HK-1944785695,2,Candlelight Dinner,12,,11.5
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-8,,8,HK-1484505361,1,Speed Dragon,12,,11.375
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-8,,8,HK-1763363205,3,Sagacious Life,12,,8.375
-2026-09-17,HK2026-09-16-H V,HK2026-09-16-H V-8,,8,HK-500237872,2,Massive Sovereign,12,,8.375
