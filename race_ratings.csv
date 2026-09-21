@@ -93,11 +93,11 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-21,5197460,5481491,Kensington,9,5383324,4,Machiavelli,6,Trial,
 2026-09-21,5197460,5481491,Kensington,9,5385380,1,Flying Houdini,6,Trial,
 2026-09-21,5197376,5480935,Lark Hill,1,5379163,4,Choux Dynamo,9,Trial,
-2026-09-21,5197376,5480935,Lark Hill,1,5390529,5,Albirex,9,Trial,
-2026-09-21,5197376,5480935,Lark Hill,1,5382896,6,Zingiber,9,Trial,
-2026-09-21,5197376,5481512,Lark Hill,2,5285953,5,Spacewalk,8,Trial,
-2026-09-21,5197376,5481512,Lark Hill,2,5277128,4,Lets Galahvant,8,Trial,
+2026-09-21,5197376,5480935,Lark Hill,1,5368384,9,Lil Snip,9,Trial,
+2026-09-21,5197376,5480935,Lark Hill,1,5369850,2,Everlasting Light,9,Trial,
 2026-09-21,5197376,5481512,Lark Hill,2,5289046,8,Hoba West,8,Trial,
+2026-09-21,5197376,5481512,Lark Hill,2,5277128,4,Lets Galahvant,8,Trial,
+2026-09-21,5197376,5481512,Lark Hill,2,5285953,5,Spacewalk,8,Trial,
 2026-09-21,5197376,5481513,Lark Hill,3,5245657,3,Western Empire,8,Trial,
 2026-09-21,5197376,5481513,Lark Hill,3,5343285,7,Hot And High,8,Trial,
 2026-09-21,5197376,5481513,Lark Hill,3,5331967,2,Londons Image,8,Trial,
@@ -146,9 +146,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-21,5197376,5481528,Lark Hill,18,5345594,2,My Testimony,5,Trial,
 2026-09-21,5197376,5481528,Lark Hill,18,5349433,3,Howhighthemoon,5,Trial,
 2026-09-21,5197376,5481528,Lark Hill,18,5351647,1,Striking Leaf,5,Trial,
-2026-09-21,5197376,5480941,Lark Hill,19,5306560,2,Ihtsaking,5,Trial,
+2026-09-21,5197376,5480941,Lark Hill,19,5351345,5,Thangoo,5,Trial,
+2026-09-21,5197376,5480941,Lark Hill,19,5347740,3,Tagolorian,5,Trial,
 2026-09-21,5197376,5480941,Lark Hill,19,5339907,4,Holler Nuff,5,Trial,
-2026-09-21,5197376,5480941,Lark Hill,19,5309905,6,Rocking Society,5,Trial,
 2026-09-21,5194209,5468838,Narromine,1,5329990,4,Azucar,10,Maiden,62.149233169390236
 2026-09-21,5194209,5468838,Narromine,1,5367756,12,Silver Dream,10,Maiden,49.39691358024692
 2026-09-21,5194209,5468838,Narromine,1,5335364,8,Cooly Rocks,10,Maiden,46.224884975408536
