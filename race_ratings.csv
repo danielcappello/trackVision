@@ -38,19 +38,19 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5197445,5482077,Morphettville Parks,5,5377354,2,Cybicks,6,Trial,
 2026-09-28,5197445,5482077,Morphettville Parks,5,5401384,5,Zouzara Rose,6,Trial,
 2026-09-28,5197445,5482077,Morphettville Parks,5,5365624,4,Noble Espoir,6,Trial,
+2026-09-28,5197445,5475291,Morphettville Parks,6,5323535,11,Hellenic Star,11,Trial,
 2026-09-28,5197445,5475291,Morphettville Parks,6,5321793,9,Genco,11,Trial,
-2026-09-28,5197445,5475291,Morphettville Parks,6,5342564,1,Machrimore,11,Trial,
-2026-09-28,5197445,5475291,Morphettville Parks,6,5336559,8,Hood Rat,11,Trial,
+2026-09-28,5197445,5475291,Morphettville Parks,6,5370554,7,Wit Mielies,11,Trial,
 2026-09-28,5197445,5475295,Morphettville Parks,7,5309268,8,Star Sirius,9,Trial,
-2026-09-28,5197445,5475295,Morphettville Parks,7,5364247,1,Placo,9,Trial,
-2026-09-28,5197445,5475295,Morphettville Parks,7,5371885,2,Party Crasher,9,Trial,
-2026-09-28,5197445,5482078,Morphettville Parks,8,5332554,1,Terminal Shock,9,Trial,
+2026-09-28,5197445,5475295,Morphettville Parks,7,5311692,9,Watchme Win,9,Trial,
+2026-09-28,5197445,5475295,Morphettville Parks,7,5318066,3,Isuspectjeu,9,Trial,
 2026-09-28,5197445,5482078,Morphettville Parks,8,5331713,5,Hotch Potch,9,Trial,
 2026-09-28,5197445,5482078,Morphettville Parks,8,5328101,2,Taking Omaha,9,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5312216,6,Big Mav,9,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5294629,2,Flying Ace,9,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5291405,4,Andrews Memory,9,Trial,
-2026-09-28,5197445,5482080,Morphettville Parks,10,5328311,2,Copper Bullet,9,Trial,
+2026-09-28,5197445,5482078,Morphettville Parks,8,5297778,7,Enterprise Lassie,9,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5294783,1,Jazz Affair,8,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5291405,4,Andrews Memory,8,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5333790,5,Ronny Bee,8,Trial,
+2026-09-28,5197445,5482080,Morphettville Parks,10,5332294,7,Lillikins,9,Trial,
 2026-09-28,5197445,5482080,Morphettville Parks,10,5358398,5,Mr Ribtickler,9,Trial,
 2026-09-28,5197445,5482080,Morphettville Parks,10,5350036,1,Goodwin Guru,9,Trial,
 2026-09-28,5197445,5482081,Morphettville Parks,11,5344675,1,Veloce Girl,9,Trial,
@@ -64,13 +64,13 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5197445,5482086,Morphettville Parks,13,5364696,2,Insidious,7,Trial,
 2026-09-28,5197445,5482073,Morphettville Parks,14,5328342,8,Swan Dance,10,Trial,
 2026-09-28,5197445,5482073,Morphettville Parks,14,5332676,10,Oasis,10,Trial,
-2026-09-28,5197445,5482073,Morphettville Parks,14,5364696,7,Insidious,10,Trial,
+2026-09-28,5197445,5482073,Morphettville Parks,14,5353338,6,Not An Easy Road,10,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5306503,1,Testa Dura,8,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5336344,8,Little Rocket,8,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5344530,4,Shogun Chikara,8,Trial,
 2026-09-28,5197445,5482075,Morphettville Parks,16,5378662,2,Fiorona,9,Trial,
 2026-09-28,5197445,5482075,Morphettville Parks,16,5360534,8,Touch Of Fire,9,Trial,
-2026-09-28,5197445,5482075,Morphettville Parks,16,5352416,6,Zipit,9,Trial,
+2026-09-28,5197445,5482075,Morphettville Parks,16,5359305,4,Candy In Miami,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5322078,8,Track Patcher,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5348986,7,Cut No Ice,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5347467,6,From Little Things,9,Trial,
@@ -86,9 +86,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5195834,5469790,Park Kilmore,4,5342091,1,Beast Fighter,14,Maiden,91.44155844155844
 2026-09-28,5195834,5469790,Park Kilmore,4,5365992,11,Bohemian Blitz,14,Maiden,86.63246753246753
 2026-09-28,5195834,5469790,Park Kilmore,4,5346801,6,Weasel Sea,14,Maiden,83.22747087382974
-2026-09-28,5195834,5469784,Park Kilmore,5,5383817,3,Share The Music,13,BM 58,109.57692307692308
-2026-09-28,5195834,5469784,Park Kilmore,5,5363686,8,Knurl,13,BM 58,95.65655635812703
-2026-09-28,5195834,5469784,Park Kilmore,5,5334169,4,Frosted In Time,13,BM 58,87.44585273523874
+2026-09-28,5195834,5469784,Park Kilmore,5,5383817,3,Share The Music,12,BM 58,109.375
+2026-09-28,5195834,5469784,Park Kilmore,5,5363686,8,Knurl,12,BM 58,95.45463328120397
+2026-09-28,5195834,5469784,Park Kilmore,5,5334169,4,Frosted In Time,12,BM 58,87.24392965831566
 2026-09-28,5195834,5469785,Park Kilmore,6,5375230,11,Kawa,15,BM 0-57,88.68631483805211
 2026-09-28,5195834,5469785,Park Kilmore,6,5345443,4,Fierce Fiasco,15,BM 0-57,88.54163457516623
 2026-09-28,5195834,5469785,Park Kilmore,6,5321043,10,Just Swift,15,BM 0-57,84.16812003903866
@@ -104,12 +104,12 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5197870,5482046,Southside Cranbourne,2,5315122,0,Nearing Liberty,8,Trial,
 2026-09-28,5197870,5482046,Southside Cranbourne,2,5356112,0,Zain Blue,8,Trial,
 2026-09-28,5197870,5482046,Southside Cranbourne,2,5286946,0,Hola Amigos,8,Trial,
-2026-09-28,5197870,5482047,Southside Cranbourne,3,5363666,0,Fun Party,9,Trial,
+2026-09-28,5197870,5482047,Southside Cranbourne,3,5367187,0,Sound Byte,9,Trial,
 2026-09-28,5197870,5482047,Southside Cranbourne,3,5379853,0,Relilah,9,Trial,
 2026-09-28,5197870,5482047,Southside Cranbourne,3,5378146,0,Sedotta,9,Trial,
 2026-09-28,5197870,5482048,Southside Cranbourne,4,5358037,0,Rapid Cheval,9,Trial,
+2026-09-28,5197870,5482048,Southside Cranbourne,4,5347422,0,Light Moves,9,Trial,
 2026-09-28,5197870,5482048,Southside Cranbourne,4,5347371,0,Sky Watcher,9,Trial,
-2026-09-28,5197870,5482048,Southside Cranbourne,4,5345318,0,Celestra,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5372840,0,Pocket Watch,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5360909,0,The Destroyer,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5362534,0,Whiskey Boy,9,Trial,
@@ -117,8 +117,8 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5197870,5482050,Southside Cranbourne,6,5290327,0,Everett,8,Trial,
 2026-09-28,5197870,5482050,Southside Cranbourne,6,5329178,0,Welcometodetroit,8,Trial,
 2026-09-28,5197870,5482051,Southside Cranbourne,7,5367357,0,Bourne Legacy,9,Trial,
+2026-09-28,5197870,5482051,Southside Cranbourne,7,5368874,0,Prestige Valour,9,Trial,
 2026-09-28,5197870,5482051,Southside Cranbourne,7,5374482,0,Tequilas Bro,9,Trial,
-2026-09-28,5197870,5482051,Southside Cranbourne,7,5391488,0,Wandjina/Cremona/2023,9,Trial,
 2026-09-28,5197870,5482052,Southside Cranbourne,8,5346797,0,Zeffirelli,8,Trial,
 2026-09-28,5197870,5482052,Southside Cranbourne,8,5340981,0,Plucky Enuff,8,Trial,
 2026-09-28,5197870,5482052,Southside Cranbourne,8,5339041,0,In All Honesty,8,Trial,
@@ -170,9 +170,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5196006,5468324,Tamworth,6,5302821,1,Flywheel,11,BM 78,88.37261168151221
 2026-09-28,5196006,5468324,Tamworth,6,5329266,6,Cresta Run,11,BM 78,75.7681219304256
 2026-09-28,5196006,5468324,Tamworth,6,5304946,3,Taipan Legend,11,BM 78,67.26129022866348
-2026-09-28,5196006,5468327,Tamworth,7,5326995,5,Haney,10,BM 70,82.86720928603366
-2026-09-28,5196006,5468327,Tamworth,7,5328693,4,Brighella,10,BM 70,75.9779570976382
-2026-09-28,5196006,5468327,Tamworth,7,5331897,1,Irish Jig,10,BM 70,75.74117124876287
+2026-09-28,5196006,5468327,Tamworth,7,5326995,5,Haney,9,BM 70,82.15054261936699
+2026-09-28,5196006,5468327,Tamworth,7,5328693,4,Brighella,9,BM 70,75.26129043097154
+2026-09-28,5196006,5468327,Tamworth,7,5331897,1,Irish Jig,9,BM 70,75.0245045820962
 2026-09-28,5194203,5468768,Wagga,1,5349782,2,The Ultimate Star,11,Maiden,80.9797315000567
 2026-09-28,5194203,5468768,Wagga,1,5365304,10,The Friskee Flash,11,Maiden,69.84343434343434
 2026-09-28,5194203,5468768,Wagga,1,5353317,6,Colorado Sun,11,Maiden,66.56520343847806
@@ -182,9 +182,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5194203,5468765,Wagga,2,5333588,6,Prophets Promise,6,BM 64,53.3728118885187
 2026-09-28,5194203,5468765,Wagga,2,5273940,1,Philadelphia Storm,6,BM 64,47.33632544936686
 2026-09-28,5194203,5468765,Wagga,2,5318040,8,Malinga Missile,6,BM 64,44.94340912141959
-2026-09-28,5197836,5482018,Wagga,2,5305832,10,Villasaurus,10,Trial,
-2026-09-28,5197836,5482018,Wagga,2,5266674,6,Martha Lavinia,10,Trial,
-2026-09-28,5197836,5482018,Wagga,2,5278667,2,Bianco Vilano,10,Trial,
+2026-09-28,5197836,5482018,Wagga,2,5278667,2,Bianco Vilano,9,Trial,
+2026-09-28,5197836,5482018,Wagga,2,5266674,6,Martha Lavinia,9,Trial,
+2026-09-28,5197836,5482018,Wagga,2,5305832,10,Villasaurus,9,Trial,
 2026-09-28,5194203,5468764,Wagga,3,5302626,6,Midnight Affair,5,BM 70,70.50945869932067
 2026-09-28,5194203,5468764,Wagga,3,5349357,8,Chief Of War,5,BM 70,69.98776937801212
 2026-09-28,5194203,5468764,Wagga,3,5325987,2,Rocco Lini,5,BM 70,62.69306535127573
