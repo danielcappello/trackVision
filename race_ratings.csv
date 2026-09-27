@@ -23,10 +23,10 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5196062,5466018,Bunbury,8,5344292,1,Yamashitas Gold,14,BM 70,89.6637391113831
 2026-09-28,5196062,5466018,Bunbury,8,5304644,7,Surround Me,14,BM 70,72.21748147140818
 2026-09-28,5196062,5466018,Bunbury,8,5352976,2,Girls On Fire,14,BM 70,68.70429047392398
-2026-09-28,5197445,5482082,Morphettville Parks,1,5328311,6,Copper Bullet,5,Trial,
-2026-09-28,5197445,5482082,Morphettville Parks,1,5287235,2,Capablanca,5,Trial,
-2026-09-28,5197445,5482082,Morphettville Parks,1,5345178,1,Itsanotherbattle,5,Trial,
-2026-09-28,5197445,5482083,Morphettville Parks,2,5344543,7,Gift Of Silence,5,Trial,
+2026-09-28,5197445,5482082,Morphettville Parks,1,5345178,1,Itsanotherbattle,4,Trial,
+2026-09-28,5197445,5482082,Morphettville Parks,1,5304655,4,Power Beau,4,Trial,
+2026-09-28,5197445,5482082,Morphettville Parks,1,5287235,2,Capablanca,4,Trial,
+2026-09-28,5197445,5482083,Morphettville Parks,2,5344964,6,Captain Happy,5,Trial,
 2026-09-28,5197445,5482083,Morphettville Parks,2,5351105,4,Orlova,5,Trial,
 2026-09-28,5197445,5482083,Morphettville Parks,2,5348551,3,Arcturus Star,5,Trial,
 2026-09-28,5197445,5482084,Morphettville Parks,3,5258341,2,Howl,6,Trial,
@@ -38,45 +38,45 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5197445,5482077,Morphettville Parks,5,5377354,2,Cybicks,6,Trial,
 2026-09-28,5197445,5482077,Morphettville Parks,5,5401384,5,Zouzara Rose,6,Trial,
 2026-09-28,5197445,5482077,Morphettville Parks,5,5365624,4,Noble Espoir,6,Trial,
-2026-09-28,5197445,5475291,Morphettville Parks,6,5323535,11,Hellenic Star,11,Trial,
-2026-09-28,5197445,5475291,Morphettville Parks,6,5321793,9,Genco,11,Trial,
-2026-09-28,5197445,5475291,Morphettville Parks,6,5370554,7,Wit Mielies,11,Trial,
+2026-09-28,5197445,5475291,Morphettville Parks,6,5357995,6,Brownnoseday Glory,11,Trial,
+2026-09-28,5197445,5475291,Morphettville Parks,6,5377354,10,Cybicks,11,Trial,
+2026-09-28,5197445,5475291,Morphettville Parks,6,5349994,5,Artful Flojo,11,Trial,
 2026-09-28,5197445,5475295,Morphettville Parks,7,5309268,8,Star Sirius,9,Trial,
 2026-09-28,5197445,5475295,Morphettville Parks,7,5311692,9,Watchme Win,9,Trial,
 2026-09-28,5197445,5475295,Morphettville Parks,7,5318066,3,Isuspectjeu,9,Trial,
-2026-09-28,5197445,5482078,Morphettville Parks,8,5331713,5,Hotch Potch,9,Trial,
-2026-09-28,5197445,5482078,Morphettville Parks,8,5328101,2,Taking Omaha,9,Trial,
-2026-09-28,5197445,5482078,Morphettville Parks,8,5297778,7,Enterprise Lassie,9,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5294783,1,Jazz Affair,8,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5291405,4,Andrews Memory,8,Trial,
-2026-09-28,5197445,5482079,Morphettville Parks,9,5333790,5,Ronny Bee,8,Trial,
-2026-09-28,5197445,5482080,Morphettville Parks,10,5332294,7,Lillikins,9,Trial,
+2026-09-28,5197445,5482078,Morphettville Parks,8,5364290,6,Flaming Navy,9,Trial,
+2026-09-28,5197445,5482078,Morphettville Parks,8,5354976,9,Wind Rush,9,Trial,
+2026-09-28,5197445,5482078,Morphettville Parks,8,5351226,8,Anotherhouse,9,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5327825,9,Serial Celebrator,7,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5333790,5,Ronny Bee,7,Trial,
+2026-09-28,5197445,5482079,Morphettville Parks,9,5354344,3,Camooweal Girl,7,Trial,
+2026-09-28,5197445,5482080,Morphettville Parks,10,5328311,2,Copper Bullet,9,Trial,
 2026-09-28,5197445,5482080,Morphettville Parks,10,5358398,5,Mr Ribtickler,9,Trial,
 2026-09-28,5197445,5482080,Morphettville Parks,10,5350036,1,Goodwin Guru,9,Trial,
-2026-09-28,5197445,5482081,Morphettville Parks,11,5344675,1,Veloce Girl,9,Trial,
+2026-09-28,5197445,5482081,Morphettville Parks,11,5336165,7,Causeweluvadelaide,9,Trial,
 2026-09-28,5197445,5482081,Morphettville Parks,11,5325904,6,Leliyn,9,Trial,
-2026-09-28,5197445,5482081,Morphettville Parks,11,5288026,3,Prancing Countess,9,Trial,
-2026-09-28,5197445,5482085,Morphettville Parks,12,5376589,8,Douglas Head,7,Trial,
+2026-09-28,5197445,5482081,Morphettville Parks,11,5331102,9,Tough Talk,9,Trial,
 2026-09-28,5197445,5482085,Morphettville Parks,12,5387552,4,Skid Row,7,Trial,
+2026-09-28,5197445,5482085,Morphettville Parks,12,5392348,5,White Pointer,7,Trial,
 2026-09-28,5197445,5482085,Morphettville Parks,12,5364905,3,Super Wonder,7,Trial,
 2026-09-28,5197445,5482086,Morphettville Parks,13,5392567,3,Grande Donna,7,Trial,
 2026-09-28,5197445,5482086,Morphettville Parks,13,5359447,4,Valdart,7,Trial,
 2026-09-28,5197445,5482086,Morphettville Parks,13,5364696,2,Insidious,7,Trial,
 2026-09-28,5197445,5482073,Morphettville Parks,14,5328342,8,Swan Dance,10,Trial,
 2026-09-28,5197445,5482073,Morphettville Parks,14,5332676,10,Oasis,10,Trial,
-2026-09-28,5197445,5482073,Morphettville Parks,14,5353338,6,Not An Easy Road,10,Trial,
+2026-09-28,5197445,5482073,Morphettville Parks,14,5352717,5,Glock N Roll,10,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5306503,1,Testa Dura,8,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5336344,8,Little Rocket,8,Trial,
 2026-09-28,5197445,5482074,Morphettville Parks,15,5344530,4,Shogun Chikara,8,Trial,
-2026-09-28,5197445,5482075,Morphettville Parks,16,5378662,2,Fiorona,9,Trial,
 2026-09-28,5197445,5482075,Morphettville Parks,16,5360534,8,Touch Of Fire,9,Trial,
 2026-09-28,5197445,5482075,Morphettville Parks,16,5359305,4,Candy In Miami,9,Trial,
+2026-09-28,5197445,5482075,Morphettville Parks,16,5353302,1,Shaneeko,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5322078,8,Track Patcher,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5348986,7,Cut No Ice,9,Trial,
 2026-09-28,5197445,5475297,Morphettville Parks,17,5347467,6,From Little Things,9,Trial,
-2026-09-28,5195834,5469791,Park Kilmore,1,5371808,6,Musical Journey,13,Maiden,88.51282051282051
-2026-09-28,5195834,5469791,Park Kilmore,1,5376454,9,Refuse To Curtsy,13,Maiden,80.2388513126218
-2026-09-28,5195834,5469791,Park Kilmore,1,5370238,1,Bloomin Rich,13,Maiden,77.84615384615384
+2026-09-28,5195834,5469791,Park Kilmore,1,5371808,6,Musical Journey,12,Maiden,88.66666666666667
+2026-09-28,5195834,5469791,Park Kilmore,1,5376454,9,Refuse To Curtsy,12,Maiden,80.39269746646796
+2026-09-28,5195834,5469791,Park Kilmore,1,5370238,1,Bloomin Rich,12,Maiden,78.0
 2026-09-28,5195834,5469787,Park Kilmore,2,5365238,9,Anglais,14,Maiden,90.72835497835497
 2026-09-28,5195834,5469787,Park Kilmore,2,5343536,8,Skydream,14,Maiden,76.5957708931293
 2026-09-28,5195834,5469787,Park Kilmore,2,5347561,7,My Rosalie,14,Maiden,60.960115364565624
@@ -86,42 +86,42 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5195834,5469790,Park Kilmore,4,5342091,1,Beast Fighter,14,Maiden,91.44155844155844
 2026-09-28,5195834,5469790,Park Kilmore,4,5365992,11,Bohemian Blitz,14,Maiden,86.63246753246753
 2026-09-28,5195834,5469790,Park Kilmore,4,5346801,6,Weasel Sea,14,Maiden,83.22747087382974
-2026-09-28,5195834,5469784,Park Kilmore,5,5383817,3,Share The Music,12,BM 58,109.375
-2026-09-28,5195834,5469784,Park Kilmore,5,5363686,8,Knurl,12,BM 58,95.45463328120397
-2026-09-28,5195834,5469784,Park Kilmore,5,5334169,4,Frosted In Time,12,BM 58,87.24392965831566
+2026-09-28,5195834,5469784,Park Kilmore,5,5383817,3,Share The Music,11,BM 58,109.13636363636364
+2026-09-28,5195834,5469784,Park Kilmore,5,5363686,8,Knurl,11,BM 58,95.2159969175676
+2026-09-28,5195834,5469784,Park Kilmore,5,5334169,4,Frosted In Time,11,BM 58,87.0052932946793
 2026-09-28,5195834,5469785,Park Kilmore,6,5375230,11,Kawa,15,BM 0-57,88.68631483805211
 2026-09-28,5195834,5469785,Park Kilmore,6,5345443,4,Fierce Fiasco,15,BM 0-57,88.54163457516623
 2026-09-28,5195834,5469785,Park Kilmore,6,5321043,10,Just Swift,15,BM 0-57,84.16812003903866
 2026-09-28,5195834,5469786,Park Kilmore,7,5329449,3,Sensational Ruler,16,BM 0-57,100.49633605031332
 2026-09-28,5195834,5469786,Park Kilmore,7,5343269,12,Frostration,16,BM 0-57,90.33101440807593
 2026-09-28,5195834,5469786,Park Kilmore,7,5342169,5,Determinato,16,BM 0-57,84.05746124380406
-2026-09-28,5195834,5469789,Park Kilmore,8,5324347,1,King West,17,BM 58,86.96548173449929
-2026-09-28,5195834,5469789,Park Kilmore,8,5340111,2,Bancoora,17,BM 58,84.99357081185062
-2026-09-28,5195834,5469789,Park Kilmore,8,5342801,12,Hells Diamond,17,BM 58,76.01437908496732
+2026-09-28,5195834,5469789,Park Kilmore,8,5324347,1,King West,16,BM 58,87.31290820508752
+2026-09-28,5195834,5469789,Park Kilmore,8,5340111,2,Bancoora,16,BM 58,85.34099728243886
+2026-09-28,5195834,5469789,Park Kilmore,8,5342801,12,Hells Diamond,16,BM 58,76.36180555555555
 2026-09-28,5197870,5482045,Southside Cranbourne,1,5341331,0,Naifah,8,Trial,
 2026-09-28,5197870,5482045,Southside Cranbourne,1,5288124,0,Philosopher,8,Trial,
 2026-09-28,5197870,5482045,Southside Cranbourne,1,5298239,0,Rey Magnerio,8,Trial,
 2026-09-28,5197870,5482046,Southside Cranbourne,2,5315122,0,Nearing Liberty,8,Trial,
-2026-09-28,5197870,5482046,Southside Cranbourne,2,5356112,0,Zain Blue,8,Trial,
 2026-09-28,5197870,5482046,Southside Cranbourne,2,5286946,0,Hola Amigos,8,Trial,
-2026-09-28,5197870,5482047,Southside Cranbourne,3,5367187,0,Sound Byte,9,Trial,
+2026-09-28,5197870,5482046,Southside Cranbourne,2,5356112,0,Zain Blue,8,Trial,
+2026-09-28,5197870,5482047,Southside Cranbourne,3,5368076,0,Terracotta Warrior,9,Trial,
 2026-09-28,5197870,5482047,Southside Cranbourne,3,5379853,0,Relilah,9,Trial,
 2026-09-28,5197870,5482047,Southside Cranbourne,3,5378146,0,Sedotta,9,Trial,
+2026-09-28,5197870,5482048,Southside Cranbourne,4,5306940,0,Ten Warriors,9,Trial,
 2026-09-28,5197870,5482048,Southside Cranbourne,4,5358037,0,Rapid Cheval,9,Trial,
-2026-09-28,5197870,5482048,Southside Cranbourne,4,5347422,0,Light Moves,9,Trial,
-2026-09-28,5197870,5482048,Southside Cranbourne,4,5347371,0,Sky Watcher,9,Trial,
+2026-09-28,5197870,5482048,Southside Cranbourne,4,5349984,0,Deliberate Ploy,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5372840,0,Pocket Watch,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5360909,0,The Destroyer,9,Trial,
 2026-09-28,5197870,5482049,Southside Cranbourne,5,5362534,0,Whiskey Boy,9,Trial,
-2026-09-28,5197870,5482050,Southside Cranbourne,6,5352081,0,Desmond William,8,Trial,
+2026-09-28,5197870,5482050,Southside Cranbourne,6,5371913,0,On The Loose,8,Trial,
 2026-09-28,5197870,5482050,Southside Cranbourne,6,5290327,0,Everett,8,Trial,
 2026-09-28,5197870,5482050,Southside Cranbourne,6,5329178,0,Welcometodetroit,8,Trial,
-2026-09-28,5197870,5482051,Southside Cranbourne,7,5367357,0,Bourne Legacy,9,Trial,
-2026-09-28,5197870,5482051,Southside Cranbourne,7,5368874,0,Prestige Valour,9,Trial,
+2026-09-28,5197870,5482051,Southside Cranbourne,7,5391488,0,Wandjina/Cremona/2023,9,Trial,
 2026-09-28,5197870,5482051,Southside Cranbourne,7,5374482,0,Tequilas Bro,9,Trial,
-2026-09-28,5197870,5482052,Southside Cranbourne,8,5346797,0,Zeffirelli,8,Trial,
-2026-09-28,5197870,5482052,Southside Cranbourne,8,5340981,0,Plucky Enuff,8,Trial,
-2026-09-28,5197870,5482052,Southside Cranbourne,8,5339041,0,In All Honesty,8,Trial,
+2026-09-28,5197870,5482051,Southside Cranbourne,7,5368874,0,Prestige Valour,9,Trial,
+2026-09-28,5197870,5482052,Southside Cranbourne,8,5385552,0,Guthrie,8,Trial,
+2026-09-28,5197870,5482052,Southside Cranbourne,8,5329082,0,Deadly Force,8,Trial,
+2026-09-28,5197870,5482052,Southside Cranbourne,8,5307366,0,Golde N Fire,8,Trial,
 2026-09-28,5197870,5482053,Southside Cranbourne,9,5369639,0,Berardo,8,Trial,
 2026-09-28,5197870,5482053,Southside Cranbourne,9,5375751,0,Harry Angel (Ire)/Dress/2023,8,Trial,
 2026-09-28,5197870,5482053,Southside Cranbourne,9,5369819,0,Smart Step,8,Trial,
@@ -182,9 +182,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5194203,5468765,Wagga,2,5333588,6,Prophets Promise,6,BM 64,53.3728118885187
 2026-09-28,5194203,5468765,Wagga,2,5273940,1,Philadelphia Storm,6,BM 64,47.33632544936686
 2026-09-28,5194203,5468765,Wagga,2,5318040,8,Malinga Missile,6,BM 64,44.94340912141959
-2026-09-28,5197836,5482018,Wagga,2,5278667,2,Bianco Vilano,9,Trial,
-2026-09-28,5197836,5482018,Wagga,2,5266674,6,Martha Lavinia,9,Trial,
 2026-09-28,5197836,5482018,Wagga,2,5305832,10,Villasaurus,9,Trial,
+2026-09-28,5197836,5482018,Wagga,2,5266674,6,Martha Lavinia,9,Trial,
+2026-09-28,5197836,5482018,Wagga,2,5278667,2,Bianco Vilano,9,Trial,
 2026-09-28,5194203,5468764,Wagga,3,5302626,6,Midnight Affair,5,BM 70,70.50945869932067
 2026-09-28,5194203,5468764,Wagga,3,5349357,8,Chief Of War,5,BM 70,69.98776937801212
 2026-09-28,5194203,5468764,Wagga,3,5325987,2,Rocco Lini,5,BM 70,62.69306535127573
@@ -200,18 +200,18 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-09-28,5194203,5468766,Wagga,7,5303159,1,Light Infantry,9,BM 70,67.5223817687204
 2026-09-28,5194203,5468766,Wagga,7,5334114,5,Bonnie Murringo,9,BM 70,60.721627122150686
 2026-09-28,5194203,5468766,Wagga,7,5348370,9,Serenading,9,BM 70,56.558307320717994
-2026-09-28,5197463,5477873,Warwick Farm,1,5375276,4,Autumn Winter,10,Trial,
-2026-09-28,5197463,5477873,Warwick Farm,1,5275266,2,Anythink Goes,10,Trial,
-2026-09-28,5197463,5477873,Warwick Farm,1,5333033,1,Aerostern Bro,10,Trial,
+2026-09-28,5197463,5477873,Warwick Farm,1,5375276,4,Autumn Winter,9,Trial,
+2026-09-28,5197463,5477873,Warwick Farm,1,5275266,2,Anythink Goes,9,Trial,
+2026-09-28,5197463,5477873,Warwick Farm,1,5341904,3,Autumn Surf,9,Trial,
 2026-09-28,5197463,5481984,Warwick Farm,2,5349778,8,Sun Warrior,9,Trial,
 2026-09-28,5197463,5481984,Warwick Farm,2,5254961,1,Coal Crusher,9,Trial,
 2026-09-28,5197463,5481984,Warwick Farm,2,5303458,3,Kerguelen,9,Trial,
-2026-09-28,5197463,5481985,Warwick Farm,3,5362514,6,Piedmont,9,Trial,
-2026-09-28,5197463,5481985,Warwick Farm,3,5305898,5,Maharba,9,Trial,
-2026-09-28,5197463,5481985,Warwick Farm,3,5321675,1,Can Expect Greater,9,Trial,
+2026-09-28,5197463,5481985,Warwick Farm,3,5305898,5,Maharba,8,Trial,
+2026-09-28,5197463,5481985,Warwick Farm,3,5321675,1,Can Expect Greater,8,Trial,
+2026-09-28,5197463,5481985,Warwick Farm,3,5323925,7,Show Business,8,Trial,
+2026-09-28,5197463,5481986,Warwick Farm,4,5348192,2,Bruce I Am,9,Trial,
 2026-09-28,5197463,5481986,Warwick Farm,4,5344281,7,Scenic Point,9,Trial,
 2026-09-28,5197463,5481986,Warwick Farm,4,5248534,4,Phearson,9,Trial,
-2026-09-28,5197463,5481986,Warwick Farm,4,5266002,8,Uzziah,9,Trial,
 2026-09-28,5197463,5477878,Warwick Farm,5,5389706,4,Lord Prahaar,9,Trial,
 2026-09-28,5197463,5477878,Warwick Farm,5,5377719,6,Nautical Mile,9,Trial,
 2026-09-28,5197463,5477878,Warwick Farm,5,5377782,1,Bolthole,9,Trial,
