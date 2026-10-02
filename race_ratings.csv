@@ -148,7 +148,7 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-10-02,5198093,5482274,Rosehill Gardens,2,5345933,9,Within The Law,7,Trial,
 2026-10-02,5198093,5482275,Rosehill Gardens,3,5364382,3,Amazone,6,Trial,
 2026-10-02,5198093,5482275,Rosehill Gardens,3,5373910,5,Cadmean,6,Trial,
-2026-10-02,5198093,5482275,Rosehill Gardens,3,5363358,6,Close Combat,6,Trial,
+2026-10-02,5198093,5482275,Rosehill Gardens,3,5399179,1,Ace High Straight,6,Trial,
 2026-10-02,5198093,5482276,Rosehill Gardens,4,5348662,3,Chinta,6,Trial,
 2026-10-02,5198093,5482276,Rosehill Gardens,4,5353191,5,Michonnes Katana,6,Trial,
 2026-10-02,5198093,5482276,Rosehill Gardens,4,5358754,1,Ammunition,6,Trial,
@@ -156,17 +156,17 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-10-02,5198093,5482277,Rosehill Gardens,5,5391912,7,Sir Dinadan,9,Trial,
 2026-10-02,5198093,5482277,Rosehill Gardens,5,5375100,2,Man Of Worth,9,Trial,
 2026-10-02,5198093,5482278,Rosehill Gardens,6,5293195,4,Filthy Habits,8,Trial,
-2026-10-02,5198093,5482278,Rosehill Gardens,6,5310139,5,Jokers Grin,8,Trial,
 2026-10-02,5198093,5482278,Rosehill Gardens,6,5340943,3,Damien,8,Trial,
-2026-10-02,5198093,5482250,Rosehill Gardens,7,5382029,9,Wakefield,9,Trial,
+2026-10-02,5198093,5482278,Rosehill Gardens,6,5310139,5,Jokers Grin,8,Trial,
+2026-10-02,5198093,5482250,Rosehill Gardens,7,5384542,1,Hanyu Selected,9,Trial,
 2026-10-02,5198093,5482250,Rosehill Gardens,7,5376894,7,Sejata,9,Trial,
 2026-10-02,5198093,5482250,Rosehill Gardens,7,5378418,6,Royal Accord,9,Trial,
-2026-10-02,5198093,5482247,Rosehill Gardens,8,5363557,3,Cucina,7,Trial,
 2026-10-02,5198093,5482247,Rosehill Gardens,8,5370132,1,Athenara,7,Trial,
-2026-10-02,5198093,5482247,Rosehill Gardens,8,5367755,5,In Her Name,7,Trial,
-2026-10-02,5198093,5482248,Rosehill Gardens,9,5363508,1,Arthur Park,8,Trial,
+2026-10-02,5198093,5482247,Rosehill Gardens,8,5363557,3,Cucina,7,Trial,
+2026-10-02,5198093,5482247,Rosehill Gardens,8,5360366,2,Ballet Dlight,7,Trial,
+2026-10-02,5198093,5482248,Rosehill Gardens,9,5388409,2,Dubious Express,8,Trial,
+2026-10-02,5198093,5482248,Rosehill Gardens,9,5363367,4,Guest Speaker,8,Trial,
 2026-10-02,5198093,5482248,Rosehill Gardens,9,5363130,7,War Banner,8,Trial,
-2026-10-02,5198093,5482248,Rosehill Gardens,9,5361674,5,Horologist,8,Trial,
 2026-10-02,5198093,5482249,Rosehill Gardens,10,5342006,4,Enterprising,7,Trial,
 2026-10-02,5198093,5482249,Rosehill Gardens,10,5346286,7,Think And Act,7,Trial,
 2026-10-02,5198093,5482249,Rosehill Gardens,10,5346420,6,Nonnos Power,7,Trial,
@@ -197,9 +197,9 @@ date,meetid,raceid,track,race,horseid,entrantnumber,horse,field_size,raceclass,s
 2026-10-02,5194757,5472384,Sunshine Coast,1,5344016,1,Wasai,8,Maiden,78.4611664118778
 2026-10-02,5194757,5472384,Sunshine Coast,1,5345231,2,Indamouse,8,Maiden,70.62160286366021
 2026-10-02,5194757,5472384,Sunshine Coast,1,5347024,7,Chance De Lune,8,Maiden,57.05261329381391
-2026-10-02,5194757,5472380,Sunshine Coast,2,5291246,5,Latin Love,6,BM 58,69.75581397180578
-2026-10-02,5194757,5472380,Sunshine Coast,2,5306285,4,Miss Dynamo,6,BM 58,65.68991008198529
-2026-10-02,5194757,5472380,Sunshine Coast,2,5314695,7,Ormond Road,6,BM 58,44.487005260327486
+2026-10-02,5194757,5472380,Sunshine Coast,2,5291246,5,Latin Love,5,BM 58,69.15581397180577
+2026-10-02,5194757,5472380,Sunshine Coast,2,5306285,4,Miss Dynamo,5,BM 58,65.08991008198528
+2026-10-02,5194757,5472380,Sunshine Coast,2,5314695,7,Ormond Road,5,BM 58,43.887005260327484
 2026-10-02,5194757,5472385,Sunshine Coast,3,5326537,8,Akira San,12,Maiden,80.44831444526567
 2026-10-02,5194757,5472385,Sunshine Coast,3,5336222,6,Testy Nic,12,Maiden,70.13774765744066
 2026-10-02,5194757,5472385,Sunshine Coast,3,5352495,3,Exobrazen,12,Maiden,66.78437885690384
